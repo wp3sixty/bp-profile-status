@@ -1,0 +1,9 @@
+*.DS_Store
+*.swp
+*.bak
+/nbproject/private/
+*/.sass-cache/
+.idea
+*.sass-cache
+node_modules
+npm-debug.log
