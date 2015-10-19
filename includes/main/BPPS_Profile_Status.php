@@ -1,5 +1,4 @@
 <?php
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -20,6 +19,7 @@ class BPPS_Profile_Status {
     public function __construct() {
         if( class_exists( 'BuddyPress' ) ) {
             add_action( 'bp_init', array( $this, 'bpps_add_profile_status_menu' ) );
+            add_action( 'bp_template_content', array( $this, 'bpps_content' ) );
 
             add_filter( 'bp_settings_admin_nav', array( $this, 'bpps_profile_status_nav' ), 3 );
         }
@@ -90,6 +90,50 @@ class BPPS_Profile_Status {
         );
 
         return $wp_admin_nav;
+    }
+
+    /*
+     * UI for adding status
+     */
+
+    public function bpps_content() {
+        if( buddypress()->current_action != 'status' ) {
+            return;
+        }
+        ?>
+        <form method="post">
+            <div class="bp-widget bpps-add-new">
+                <textarea name="bpps_add_new_status" id="bpps_add_new_status" placeholder="Add New Status..."></textarea>
+                <input type="submit" name="bpps_add_new" id="bpps_add_new" value="Add New" />
+                <input type="submit" name="bpps_add_new_and_set" id="bpps_add_new_and_set" value="Add New & Set as Current" />
+            </div>
+        </form>
+        <?php
+        $this->bpps_add_new_status_action( $_POST );
+    }
+
+    /*
+     * Adding new status action
+     */
+
+    public function bpps_add_new_status_action( $post_array ) {
+        if( !empty( $post_array ) && $post_array[ 'bpps_add_new_status' ] != '' ) {
+            $user_id = get_current_user_id();
+
+            if( isset( $post_array[ 'bpps_add_new' ] ) ) {
+                $bpps_statuses = get_user_meta( $user_id, 'bpps_old_statuses', true );
+
+                if( !empty( $bpps_statuses ) && !in_array( trim( $post_array[ 'bpps_add_new_status' ] ), $bpps_statuses ) ) {
+                    array_unshift( $bpps_statuses, trim( $post_array[ 'bpps_add_new_status' ] ) );
+                } else {
+                    $bpps_statuses = array( trim( $post_array[ 'bpps_add_new_status' ] ) );
+                }
+
+                update_user_meta( $user_id, 'bpps_old_statuses', $bpps_statuses );
+            } else if( isset( $post_array[ 'bpps_add_new_and_set' ] ) ) {
+                //update_user_meta( $user_id, 'bpps_current_status', trim( $post_array[ 'bpps_add_new_status' ] ) );
+            }
+        }
     }
 
 }
