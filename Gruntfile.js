@@ -1,25 +1,20 @@
 'use strict';
-module.exports = function ( grunt ) {
-    
+module.exports = function( grunt ) {
+
     // load all grunt tasks matching the `grunt-*` pattern
     // Ref. https://npmjs.org/package/load-grunt-tasks
     require( 'load-grunt-tasks' )( grunt );
 
     grunt.initConfig( {
-        
         // watch for changes and trigger sass, jshint, uglify and livereload
         watch: {
             sass: {
-                files: [ 'includes/assets/admin/css/sass/**/*.{scss,sass}' ],
+                files: [ 'includes/assets/css/sass/**/*.{scss,sass}' ],
                 tasks: [ 'sass' ]
             },
             autoprefixer: {
-                files: [ 'includes/assets/admin/css/*.css' ],
+                files: [ 'includes/assets/css/*.css' ],
                 tasks: [ 'autoprefixer' ]
-            },
-            js: {
-                files: [ '<%= uglify.backend.src %>' ],
-                tasks: [ 'uglify' ]
             },
             livereload: {
                 // Here we watch the files the sass task will compile to
@@ -36,7 +31,7 @@ module.exports = function ( grunt ) {
                     sourcemap: 'none'
                 },
                 files: {
-                    'includes/assets/admin/css/sfi-admin.css': 'includes/assets/admin/css/sass/sfi-admin.scss'
+                    'includes/assets/css/bpps.css': 'includes/assets/css/sass/bpps.scss'
                 }
             },
             minify: {
@@ -45,7 +40,7 @@ module.exports = function ( grunt ) {
                     sourcemap: 'none'
                 },
                 files: {
-                    'includes/assets/admin/css/sfi-admin.min.css': 'includes/assets/admin/css/sass/sfi-admin.scss'
+                    'includes/assets/css/bpps.min.css': 'includes/assets/css/sass/bpps.scss'
                 }
             }
         },
@@ -54,30 +49,17 @@ module.exports = function ( grunt ) {
             dist: {
                 options: {
                     browsers: [ 'last 2 versions', 'ie 9', 'ios 6', 'android 4' ],
-                    expand: true,
-                    flatten: true
+                    expand: true, flatten: true
                 },
                 files: {
-                    'includes/assets/admin/css/sfi-admin.css': 'includes/assets/admin/css/sfi-admin.css',
-                    'includes/assets/admin/css/sfi-admin.min.css': 'includes/assets/admin/css/sfi-admin.min.css'
+                    'includes/assets/css/bpps.css': 'includes/assets/css/bpps.css',
+                    'includes/assets/css/bpps.min.css': 'includes/assets/css/bpps.min.css'
                 }
-            }
-        },
-        // Uglify Ref. https://npmjs.org/package/grunt-contrib-uglify
-        uglify: {
-            options: {
-                banner: '/*! \n * Social Feed Importer JavaScript Library \n * @package Social Feed Importer \n */\n',
-            },
-            backend: {
-                src: [
-                    'includes/assets/admin/js/sfi-admin.js'
-                ],
-                dest: 'includes/assets/admin/js/sfi-admin.min.js'
             }
         },
         checktextdomain: {
             options: {
-                text_domain: 'fab', //Specify allowed domain(s)
+                text_domain: 'bp-profile-status', //Specify allowed domain(s)
                 keywords: [ //List keyword specifications
                     '__:1,2d',
                     '_e:1,2d',
@@ -97,14 +79,14 @@ module.exports = function ( grunt ) {
             },
             target: {
                 files: [ {
-                    src: [
-                        '*.php',
-                        '**/*.php',
-                        '!node_modules/**',
-                        '!tests/**'
-                    ], //all php
-                    expand: true
-                } ]
+                        src: [
+                            '*.php',
+                            '**/*.php',
+                            '!node_modules/**',
+                            '!tests/**'
+                        ], //all php
+                        expand: true
+                    } ]
             }
         },
         makepot: {
@@ -114,12 +96,12 @@ module.exports = function ( grunt ) {
                     domainPath: 'languages/', // Where to save the POT file.
                     exclude: [ 'node_modules/*' ], // List of files or directories to ignore.
                     mainFile: 'index.php', // Main project file.
-                    potFilename: 'fab.pot', // Name of the POT file.
+                    potFilename: 'bp-profile-status.pot', // Name of the POT file.
                     potHeaders: { // Headers to add to the generated POT file.
                         poedit: true, // Includes common Poedit headers.
-                        'Last-Translator': 'rtCamp <support@rtcamp.com>',
-                        'Language-Team': 'rtCamp <support@rtcamp.com>',
-                        'report-msgid-bugs-to': 'http://rtcamp.com/',
+                        'Last-Translator': 'Sanket <sanket.parmar11@gmail.com>',
+                        'Language-Team': 'Sanket <sanket.parmar11@gmail.com>',
+                        'report-msgid-bugs-to': '',
                         'x-poedit-keywordslist': true // Include a list of all possible gettext functions.
                     },
                     type: 'wp-plugin', // Type of project (wp-plugin or wp-theme).
@@ -130,5 +112,5 @@ module.exports = function ( grunt ) {
 
     } );
     // register task
-    grunt.registerTask( 'default', [ 'sass', 'autoprefixer', 'uglify', 'checktextdomain', 'makepot', 'watch' ] );
+    grunt.registerTask( 'default', [ 'sass', 'autoprefixer', 'checktextdomain', 'makepot', 'watch' ] );
 };
