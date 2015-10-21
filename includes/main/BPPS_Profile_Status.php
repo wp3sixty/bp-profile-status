@@ -109,6 +109,7 @@ class BPPS_Profile_Status {
                     <textarea name="bpps_add_new_status" id="bpps_add_new_status" placeholder="Add New Status..."></textarea>
                     <input type="submit" name="bpps_add_new" id="bpps_add_new" value="Add New" />
                     <input type="submit" name="bpps_add_new_and_set" id="bpps_add_new_and_set" value="Add New & Set as Current" />
+                    <span><span>140</span><?php echo " " . __( 'characters left' ); ?></span>
                 </div>
             </form>
             <?php
@@ -117,26 +118,6 @@ class BPPS_Profile_Status {
         $this->bpps_add_new_status_action( $_POST );
 
         $bpps_current_status = get_user_meta( bp_displayed_user_id(), 'bpps_current_status', true );
-        ?>
-        <div class="bp-widget bpps-current-status">
-            <h4><?php echo __( 'Current Status', 'bp-profile-status' ); ?></h4>
-            <table class="bpps-current-status-table">
-                <tbody>
-                    <tr>
-                        <td>
-                            <?php
-                            if( $bpps_current_status ) {
-                                echo $bpps_current_status;
-                            } else {
-                                echo __( 'No current status is set yet.', 'bp-profile-status' );
-                            }
-                            ?>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <?php
         $bpps_old_statuses = get_user_meta( bp_displayed_user_id(), 'bpps_old_statuses', true );
 
         if( !empty( $bpps_old_statuses ) ) {

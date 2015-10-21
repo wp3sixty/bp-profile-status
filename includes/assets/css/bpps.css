@@ -17,3 +17,7 @@ and open the template in the editor.
 .bpps-old-statuses .bpps-old-statuses-table td.bpps-old-status-count {
   width: 25%;
 }
+
+.bpps-add-new > span {
+  float: right;
+}

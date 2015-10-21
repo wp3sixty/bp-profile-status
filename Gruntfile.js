@@ -16,6 +16,10 @@ module.exports = function( grunt ) {
                 files: [ 'includes/assets/css/*.css' ],
                 tasks: [ 'autoprefixer' ]
             },
+            js: {
+                files: '<%= uglify.frontend.src %>',
+                tasks: [ 'uglify' ]
+            },
             livereload: {
                 // Here we watch the files the sass task will compile to
                 // These files are sent to the live reload server after sass compiles to them
@@ -55,6 +59,18 @@ module.exports = function( grunt ) {
                     'includes/assets/css/bpps.css': 'includes/assets/css/bpps.css',
                     'includes/assets/css/bpps.min.css': 'includes/assets/css/bpps.min.css'
                 }
+            }
+        },
+        // Uglify Ref. https://npmjs.org/package/grunt-contrib-uglify
+        uglify: {
+            options: {
+                banner: '/*! \n * BP Profile Status JavaScript Library \n * @package BP Profile Status \n */'
+            },
+            frontend: {
+                src: [
+                    'includes/assets/js/bpps.js'
+                ],
+                dest: 'includes/assets/js/bpps.min.js'
             }
         },
         checktextdomain: {
@@ -112,5 +128,5 @@ module.exports = function( grunt ) {
 
     } );
     // register task
-    grunt.registerTask( 'default', [ 'sass', 'autoprefixer', 'checktextdomain', 'makepot', 'watch' ] );
+    grunt.registerTask( 'default', [ 'sass', 'autoprefixer', 'uglify', 'checktextdomain', 'makepot', 'watch' ] );
 };

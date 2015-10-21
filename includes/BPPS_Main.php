@@ -33,6 +33,7 @@ class BPPS_Main {
 
         add_action( 'plugins_loaded', array( $this, 'bpps_class_construct' ) );
         add_action( 'wp_enqueue_scripts', array( $this, 'bpps_load_styles' ) );
+        add_action( 'wp_enqueue_scripts', array( $this, 'bpps_load_scripts' ) );
     }
 
     /*
@@ -57,6 +58,14 @@ class BPPS_Main {
 
     public function bpps_load_styles() {
         wp_enqueue_style( 'bpps-main', BPPS_URL . 'includes/assets/css/bpps' . $this->bpps_suffix . '.css', '', BPPS_VERSION );
+    }
+
+    /*
+     * Loading scripts
+     */
+
+    public function bpps_load_scripts() {
+        wp_enqueue_script( 'bpps-main', BPPS_URL . 'includes/assets/js/bpps' . $this->bpps_suffix . '.js', array( 'jquery' ), BPPS_VERSION );
     }
 
 }
