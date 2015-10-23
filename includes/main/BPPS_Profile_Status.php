@@ -104,9 +104,6 @@ class BPPS_Profile_Status {
             return;
         }
 
-        $bpps_current_status = get_user_meta( bp_displayed_user_id(), 'bpps_current_status', true );
-        $bpps_old_statuses = get_user_meta( bp_displayed_user_id(), 'bpps_old_statuses', true );
-
         if( ( get_current_user_id() == bp_displayed_user_id() ) ) {
             ?>
             <p><strong><?php echo __( 'Note', 'bp-profile-status' ) . ": "; ?></strong><?php echo __( 'You can store only 10 status. Old status will be deleted if you add more than 10 status.', 'bp-profile-status' ); ?></p>
@@ -126,8 +123,11 @@ class BPPS_Profile_Status {
             <?php
         }
 
+        $bpps_current_status = get_user_meta( bp_displayed_user_id(), 'bpps_current_status', true );
+        $bpps_old_statuses = get_user_meta( bp_displayed_user_id(), 'bpps_old_statuses', true );
+
         if( !empty( $bpps_old_statuses ) ) {
-            if( ($key = array_search( $bpps_current_status, $bpps_old_statuses )) !== false ) {
+            if( ( $key = array_search( $bpps_current_status, $bpps_old_statuses ) ) !== false ) {
                 unset( $bpps_old_statuses[ $key ] );
             }
         }
@@ -150,7 +150,7 @@ class BPPS_Profile_Status {
                                     <a title="<?php echo __( 'Set as Current Status', 'bp-profile-status' ); ?>">
                                         <i class="dashicons dashicons-yes"></i>
                                     </a>
-                                    <a title="<?php echo __( 'Edit this Status', 'bp-profile-status' ); ?>">
+                                    <a class="bpps-status-edit" title="<?php echo __( 'Edit this Status', 'bp-profile-status' ); ?>">
                                         <i class="dashicons dashicons-edit"></i>
                                     </a>
                                     <a class="bpps-status-delete" title="<?php echo __( 'Delete this Status', 'bp-profile-status' ); ?>">
@@ -191,6 +191,8 @@ class BPPS_Profile_Status {
             } else if( isset( $post_array[ 'bpps_update_status_and_set' ] ) ) {
                 update_user_meta( $user_id, 'bpps_current_status', trim( $post_array[ 'bpps_add_new_status' ] ) );
 
+                $this->bpps_update_status_in_usermeta( $post_array );
+            } else if( isset( $post_array[ 'bpps_update_status' ] ) ) {
                 $this->bpps_update_status_in_usermeta( $post_array );
             }
         }
@@ -271,6 +273,7 @@ class BPPS_Profile_Status {
         $user_id = get_current_user_id();
         $bpps_old_statuses = get_user_meta( $user_id, 'bpps_old_statuses', true );
         $key = array_search( trim( $post_array[ 'bpps-eidt-status-org' ] ), $bpps_old_statuses );
+
         $bpps_old_statuses[ $key ] = trim( $post_array[ 'bpps_add_new_status' ] );
 
         update_user_meta( $user_id, 'bpps_old_statuses', $bpps_old_statuses );

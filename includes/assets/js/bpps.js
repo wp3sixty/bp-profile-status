@@ -13,6 +13,7 @@
             this.bppsCurrentStatusEditCancel();
             this.bppsCurrentStatusDelete();
             this.bppsStatusDelete();
+            this.bppsStatusEdit();
         },
         bppsCharacterLimit: function() {
             $( '#bpps_add_new_status' ).on( 'keyup', function( e ) {
@@ -58,6 +59,7 @@
                 $( '#bpps_add_new_status' ).trigger( 'keyup' );
                 $( '#bpps_update_status_and_set' ).addClass( 'bpps_hide' );
                 $( '#bpps_update_status_and_set' ).val( 'Update & Set as Current' );
+                $( '#bpps_update_status' ).addClass( 'bpps_hide' );
                 $( '#bpps_cancel' ).addClass( 'bpps_hide' );
                 $( '#bpps_add_new' ).removeClass( 'bpps_hide' );
                 $( '#bpps_add_new_and_set' ).removeClass( 'bpps_hide' );
@@ -114,6 +116,25 @@
                         }
                     } );
                 }
+            } );
+        },
+        bppsStatusEdit: function() {
+            $( '.bpps-status-edit' ).on( 'click', function( e ) {
+                e.preventDefault();
+
+                var that = this;
+                var bpps_status = $( that ).parent().siblings( 'td' ).children( '.bpps_old_status_org' ).val();
+
+                $( '#bpps-eidt-status-org' ).val( bpps_status );
+                $( '#bpps_add_new_status' ).val( bpps_status );
+                $( that ).parent().siblings( 'td' ).children( '.bpps_old_status_org' ).val( bpps_status );
+                $( '#bpps_add_new_status' ).focus();
+                $( '#bpps_add_new_status' ).trigger( 'keyup' );
+                $( '#bpps_add_new' ).addClass( 'bpps_hide' );
+                $( '#bpps_add_new_and_set' ).addClass( 'bpps_hide' );
+                $( '#bpps_update_status' ).removeClass( 'bpps_hide' );
+                $( '#bpps_update_status_and_set' ).removeClass( 'bpps_hide' );
+                $( '#bpps_cancel' ).removeClass( 'bpps_hide' );
             } );
         }
     };
