@@ -35,6 +35,9 @@ and open the template in the editor.
   text-decoration: none;
   margin-right: 15px;
 }
+.bpps-old-statuses .bpps-old-statuses-table td:first-child {
+  text-align: left;
+}
 
 .bpps-add-new > span {
   float: right;

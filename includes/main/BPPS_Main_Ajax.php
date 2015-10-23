@@ -76,6 +76,31 @@ class BPPS_Main_Ajax {
         $user_id = get_current_user_id();
         update_user_meta( $user_id, 'bpps_current_status', trim( $_POST[ 'status' ] ) );
 
+        $bpps_statuses = get_user_meta( $user_id, 'bpps_old_statuses', true );
+
+        if( !empty( $bpps_statuses ) ) {
+            $bpps_status_count = count( $bpps_statuses );
+            $key = 0;
+
+            if( !in_array( trim( $_POST[ 'status' ] ), $bpps_statuses ) ) {
+                array_unshift( $bpps_statuses, trim( $_POST[ 'status' ] ) );
+            }
+
+            $key = array_search( trim( $_POST[ 'status' ] ), $bpps_statuses );
+
+            if( $bpps_status_count > 10 ) {
+                if( $key != 0 && $key != false && $key == 11 ) {
+                    unset( $bpps_statuses[ 10 ] );
+                } else {
+                    unset( $bpps_statuses[ 11 ] );
+                }
+            }
+        } else {
+            $bpps_statuses = array( trim( $_POST[ 'status' ] ) );
+        }
+
+        update_user_meta( $user_id, 'bpps_old_statuses', $bpps_statuses );
+
         echo "1";
         die();
     }

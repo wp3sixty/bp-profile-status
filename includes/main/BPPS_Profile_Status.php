@@ -151,12 +151,14 @@ class BPPS_Profile_Status {
                                     <a class="bpps-set-status" title="<?php echo __( 'Set as Current Status', 'bp-profile-status' ); ?>">
                                         <i class="dashicons dashicons-yes"></i>
                                     </a>
-                                    <a class="bpps-status-edit" title="<?php echo __( 'Edit this Status', 'bp-profile-status' ); ?>">
-                                        <i class="dashicons dashicons-edit"></i>
-                                    </a>
-                                    <a class="bpps-status-delete" title="<?php echo __( 'Delete this Status', 'bp-profile-status' ); ?>">
-                                        <i class="dashicons dashicons-trash"></i>
-                                    </a>
+                                    <?php if( ( get_current_user_id() == bp_displayed_user_id() ) ) { ?>
+                                        <a class="bpps-status-edit" title="<?php echo __( 'Edit this Status', 'bp-profile-status' ); ?>">
+                                            <i class="dashicons dashicons-edit"></i>
+                                        </a>
+                                        <a class="bpps-status-delete" title="<?php echo __( 'Delete this Status', 'bp-profile-status' ); ?>">
+                                            <i class="dashicons dashicons-trash"></i>
+                                        </a>
+                                    <?php } ?>
                                 </td>
                             </tr>
                             <?php

@@ -39,6 +39,10 @@ and open the template in the editor.
                 margin-right: 15px;
             }
         }
+        
+        td:first-child {
+            text-align: left;
+        }
     }
 }
 
