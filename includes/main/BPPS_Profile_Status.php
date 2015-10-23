@@ -109,7 +109,7 @@ class BPPS_Profile_Status {
                     <textarea name="bpps_add_new_status" id="bpps_add_new_status" placeholder="Add New Status..."></textarea>
                     <input type="submit" name="bpps_add_new" id="bpps_add_new" value="Add New" />
                     <input type="submit" name="bpps_add_new_and_set" id="bpps_add_new_and_set" value="Add New & Set as Current" />
-                    <span><span>140</span><?php echo " " . __( 'characters left' ); ?></span>
+                    <span><span>140</span><?php echo " " . __( 'characters left', 'bp-profile-status' ); ?></span>
                 </div>
             </form>
             <?php

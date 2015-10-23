@@ -11,16 +11,17 @@
             this.bppsCharacterLimit();
         },
         bppsCharacterLimit: function() {
-            $( '#bpps_add_new_status' ).on( 'keypress', function( e ) {
-                var max = 10;
+            $( '#bpps_add_new_status' ).on( 'keyup', function( e ) {
+                var max = 140;
                 var tval = $( this ).val();
-                var len = tval.length + 1;
+                var len = tval.length;
                 var remain = parseInt( max - len );
 
-                if( remain <= 0 && e.which !== 0 && e.charCode !== 0 ) {
+                if( remain < 0 ) {
                     alert( 'You have reached max character limit. \n\nPlease revise it.!' );
 
-                    $( this ).val( ( tval ).substring( 0, len - 1 ) );
+                    remain++;
+                    $( this ).val( ( tval ).substring( 0, max ) );
                 }
 
                 $( '.bpps-add-new span span' ).html( remain );
