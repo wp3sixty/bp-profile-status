@@ -20,6 +20,7 @@ class BPPS_Main_Ajax {
     public function __construct() {
         add_action( 'wp_ajax_bpps_delete_current_status', array( $this, 'bpps_delete_current_status' ) );
         add_action( 'wp_ajax_bpps_delete_status', array( $this, 'bpps_delete_status' ) );
+        add_action( 'wp_ajax_bpps_set_current_status', array( $this, 'bpps_set_current_status' ) );
     }
 
     /*
@@ -64,6 +65,18 @@ class BPPS_Main_Ajax {
         }
 
         echo "0";
+        die();
+    }
+
+    /*
+     * Set current status directly
+     */
+
+    public function bpps_set_current_status() {
+        $user_id = get_current_user_id();
+        update_user_meta( $user_id, 'bpps_current_status', trim( $_POST[ 'status' ] ) );
+
+        echo "1";
         die();
     }
 

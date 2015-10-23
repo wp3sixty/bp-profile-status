@@ -14,6 +14,7 @@
             this.bppsCurrentStatusDelete();
             this.bppsStatusDelete();
             this.bppsStatusEdit();
+            this.bppsSetCurrentStatus();
         },
         bppsCharacterLimit: function() {
             $( '#bpps_add_new_status' ).on( 'keyup', function( e ) {
@@ -135,6 +136,30 @@
                 $( '#bpps_update_status' ).removeClass( 'bpps_hide' );
                 $( '#bpps_update_status_and_set' ).removeClass( 'bpps_hide' );
                 $( '#bpps_cancel' ).removeClass( 'bpps_hide' );
+            } );
+        },
+        bppsSetCurrentStatus: function() {
+            $( '.bpps-set-status' ).on( 'click', function( e ) {
+                e.preventDefault();
+
+                var that = this;
+                var data = {
+                    action: 'bpps_set_current_status',
+                    status: $( that ).parent().siblings( 'td' ).children( '.bpps_old_status_org' ).val( )
+                };
+
+                $.ajax( {
+                    url: ajaxurl,
+                    type: 'post',
+                    data: data,
+                    success: function( response ) {
+                        if( response == '1' ) {
+                            alert( "Status set successfully.!" );
+
+                            window.location.reload();
+                        }
+                    }
+                } );
             } );
         }
     };

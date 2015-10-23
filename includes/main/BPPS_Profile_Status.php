@@ -147,7 +147,7 @@ class BPPS_Profile_Status {
                                     <input type="hidden" class="bpps_old_status_org" value="<?php echo $bpps_old_status; ?>" />
                                 </td>
                                 <td>
-                                    <a title="<?php echo __( 'Set as Current Status', 'bp-profile-status' ); ?>">
+                                    <a class="bpps-set-status" title="<?php echo __( 'Set as Current Status', 'bp-profile-status' ); ?>">
                                         <i class="dashicons dashicons-yes"></i>
                                     </a>
                                     <a class="bpps-status-edit" title="<?php echo __( 'Edit this Status', 'bp-profile-status' ); ?>">
