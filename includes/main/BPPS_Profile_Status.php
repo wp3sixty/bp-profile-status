@@ -171,7 +171,7 @@ class BPPS_Profile_Status {
      */
 
     public function bpps_add_new_status_action( $post_array ) {
-        if( !empty( $post_array ) && $post_array[ 'bpps_add_new_status' ] != '' ) {
+        if( !empty( $post_array ) && isset( $post_array[ 'bpps_add_new_status' ] ) && $post_array[ 'bpps_add_new_status' ] != '' ) {
             $user_id = get_current_user_id();
 
             if( isset( $post_array[ 'bpps_add_new' ] ) ) {
@@ -196,8 +196,24 @@ class BPPS_Profile_Status {
         $bpps_statuses = get_user_meta( $user_id, 'bpps_old_statuses', true );
 
         if( !empty( $bpps_statuses ) ) {
+            $bpps_status_count = count( $bpps_statuses );
+            $bpps_current_status = get_user_meta( $user_id, 'bpps_current_status', true );
+            $key = 0;
+
             if( !in_array( trim( $post_array[ 'bpps_add_new_status' ] ), $bpps_statuses ) ) {
                 array_unshift( $bpps_statuses, trim( $post_array[ 'bpps_add_new_status' ] ) );
+            }
+
+            if( $bpps_current_status ) {
+                $key = array_search( $bpps_current_status, $bpps_statuses );
+            }
+
+            if( $bpps_status_count > 10 ) {
+                if( $key != 0 && $key != false && $key == 11 ) {
+                    unset( $bpps_statuses[ 10 ] );
+                } else {
+                    unset( $bpps_statuses[ 11 ] );
+                }
             }
         } else {
             $bpps_statuses = array( trim( $post_array[ 'bpps_add_new_status' ] ) );
