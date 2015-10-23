@@ -24,7 +24,7 @@
                 var remain = parseInt( max - len );
 
                 if( remain < 0 ) {
-                    alert( 'You have reached max character limit. \n\nPlease revise it.!' );
+                    alert( bpps_main_js.bpps_max_character_alert );
 
                     remain++;
 
@@ -46,7 +46,7 @@
                 $( '#bpps_add_new_status' ).trigger( 'keyup' );
                 $( '#bpps_add_new' ).addClass( 'bpps_hide' );
                 $( '#bpps_add_new_and_set' ).addClass( 'bpps_hide' );
-                $( '#bpps_update_status_and_set' ).val( 'Update' );
+                $( '#bpps_update_status_and_set' ).val( bpps_main_js.bpps_update );
                 $( '#bpps_update_status_and_set' ).removeClass( 'bpps_hide' );
                 $( '#bpps_cancel' ).removeClass( 'bpps_hide' );
             } );
@@ -59,7 +59,7 @@
                 $( '#bpps_add_new_status' ).focusout();
                 $( '#bpps_add_new_status' ).trigger( 'keyup' );
                 $( '#bpps_update_status_and_set' ).addClass( 'bpps_hide' );
-                $( '#bpps_update_status_and_set' ).val( 'Update & Set as Current' );
+                $( '#bpps_update_status_and_set' ).val( bpps_main_js.bpps_update_and_set_as_current );
                 $( '#bpps_update_status' ).addClass( 'bpps_hide' );
                 $( '#bpps_cancel' ).addClass( 'bpps_hide' );
                 $( '#bpps_add_new' ).removeClass( 'bpps_hide' );
@@ -70,7 +70,7 @@
             $( '#bpps-current-status-delete' ).on( 'click', function( e ) {
                 e.preventDefault();
 
-                if( confirm( "Are you sure you want to delete current status?" ) ) {
+                if( confirm( bpps_main_js.bpps_delete_current_status_confirm ) ) {
                     var data = {
                         action: 'bpps_delete_current_status',
                         status: $( '#bpps-current-status-org' ).val( ),
@@ -83,8 +83,8 @@
                         data: data,
                         success: function( response ) {
                             if( response == '1' ) {
-                                alert( "Current status deleted successfully.!" );
-                                $( '#bpps-current-status' ).html( "No current status is set yet." );
+                                alert( bpps_main_js.bpps_delete_current_status_success );
+                                $( '#bpps-current-status' ).html( bpps_main_js.bpps_no_current_status_set );
                             }
                         }
                     } );
@@ -97,7 +97,7 @@
 
                 var that = this;
 
-                if( confirm( "Are you sure you want to delete this status?" ) ) {
+                if( confirm( bpps_main_js.bpps_delete_status_confirm ) ) {
                     var data = {
                         action: 'bpps_delete_status',
                         status: $( that ).parent().siblings( 'td' ).children( '.bpps_old_status_org' ).val( ),
@@ -110,7 +110,7 @@
                         data: data,
                         success: function( response ) {
                             if( response == '1' ) {
-                                alert( "Status deleted successfully.!" );
+                                alert( bpps_main_js.bpps_status_delete_success );
 
                                 $( that ).parent().parent().remove();
                             }
@@ -163,7 +163,7 @@
                     data: data,
                     success: function( response ) {
                         if( response == '1' ) {
-                            alert( "Status set successfully.!" );
+                            alert( bpps_main_js.bpps_status_set_success );
 
                             window.location.reload();
                         }

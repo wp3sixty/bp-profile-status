@@ -67,6 +67,20 @@ class BPPS_Main {
 
     public function bpps_load_scripts() {
         wp_enqueue_script( 'bpps-main', BPPS_URL . 'includes/assets/js/bpps' . $this->bpps_suffix . '.js', array( 'jquery' ), BPPS_VERSION );
+
+        $bpps_localize_array = array(
+            'bpps_max_character_alert' => __( 'You have reached max character limit. \n\nPlease revise it.!', 'bp-profile-status' ),
+            'bpps_update' => __( 'Update', 'bp-profile-status' ),
+            'bpps_update_and_set_as_current' => __( 'Update & Set as Current', 'bp-profile-status' ),
+            'bpps_delete_current_status_confirm' => __( 'Are you sure you want to delete current status?', 'bp_profile_status' ),
+            'bpps_delete_current_status_success' => __( 'Current status deleted successfully.!', 'bp_profile_status' ),
+            'bpps_no_current_status_set' => __( 'No current status is set yet.', 'bp-profile-status' ),
+            'bpps_delete_status_confirm' => __( 'Are you sure you want to delete this status?', 'bp-profile-status' ),
+            'bpps_status_delete_success' => __( 'Status deleted successfully.!', 'bp-profile-status' ),
+            'bpps_status_set_success' => __( 'Status set successfully.!', 'bp-profile-status' )
+        );
+
+        wp_localize_script( 'bpps-main', 'bpps_main_js', $bpps_localize_array );
     }
 
 }
