@@ -20,7 +20,8 @@ class BPPS_Profile_Status {
         if( class_exists( 'BuddyPress' ) ) {
             add_action( 'bp_init', array( $this, 'bpps_add_profile_status_menu' ) );
             add_action( 'bp_template_content', array( $this, 'bpps_content' ), 1 );
-            add_action( 'bp_before_member_header_meta', array( $this, 'bpps_display_current_status' ), 9999 );
+            add_action( 'bp_before_member_header_meta', array( $this, 'bpps_display_current_status' ) );
+            add_action( 'bp_directory_members_item', array( $this, 'bpps_display_current_status_member_list' ) );
 
             add_filter( 'bp_settings_admin_nav', array( $this, 'bpps_profile_status_nav' ), 3 );
         }
@@ -277,6 +278,28 @@ class BPPS_Profile_Status {
         $bpps_old_statuses[ $key ] = trim( $post_array[ 'bpps_add_new_status' ] );
 
         update_user_meta( $user_id, 'bpps_old_statuses', $bpps_old_statuses );
+    }
+
+    /*
+     * Displaying current status on member list
+     */
+
+    public function bpps_display_current_status_member_list() {
+        $user_id = bp_get_member_user_id();
+        $bpps_status = get_user_meta( $user_id, 'bpps_current_status', true );
+        ?>
+        <div class="bpps-status">
+            <?php
+            if( $bpps_status ) {
+                ?>
+                <span class="bpps-status-text"><?php echo convert_smilies( $bpps_status ); ?></span>
+                <?php
+            } else {
+                echo __( 'No current status is set yet.', 'bp-profile-status' );
+            }
+            ?>
+        </div>
+        <?php
     }
 
 }
