@@ -134,23 +134,31 @@ class BPPS_Profile_Status {
         ?>
         <div class="bp-widget bpps-old-statuses">
             <h4><?php echo __( 'Old Statuses', 'bp-profile-status' ); ?></h4>
+            <?php echo wp_nonce_field( 'bpps_delete_status_nonce', 'bpps_delete_status_nonce' ); ?>
             <table class="bpps-old-statuses-table">
                 <tbody>
                     <?php
-                    $count = 1;
-
                     if( !empty( $bpps_old_statuses ) ) {
                         foreach( $bpps_old_statuses as $bpps_old_status ) {
                             ?>
                             <tr>
-                                <td class="bpps-old-status-count"><?php echo $count; ?></td>
                                 <td>
                                     <?php echo convert_smilies( $bpps_old_status ); ?>
-                                    <input type="hidden" value="<?php echo $bpps_old_status; ?>" />
+                                    <input type="hidden" class="bpps_old_status_org" value="<?php echo $bpps_old_status; ?>" />
+                                </td>
+                                <td>
+                                    <a title="<?php echo __( 'Set as Current Status', 'bp-profile-status' ); ?>">
+                                        <i class="dashicons dashicons-yes"></i>
+                                    </a>
+                                    <a title="<?php echo __( 'Edit this Status', 'bp-profile-status' ); ?>">
+                                        <i class="dashicons dashicons-edit"></i>
+                                    </a>
+                                    <a class="bpps-status-delete" title="<?php echo __( 'Delete this Status', 'bp-profile-status' ); ?>">
+                                        <i class="dashicons dashicons-trash"></i>
+                                    </a>
                                 </td>
                             </tr>
                             <?php
-                            $count++;
                         }
                     } else {
                         ?>

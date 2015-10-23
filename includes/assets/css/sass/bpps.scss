@@ -26,9 +26,18 @@ and open the template in the editor.
 }
 
 .bpps-old-statuses {
+    clear: both;
+    
     .bpps-old-statuses-table {
-        td.bpps-old-status-count {
+        td:last-child {
             width: 25%;
+            text-align: center;
+            
+            a {
+                cursor: pointer;
+                text-decoration: none;
+                margin-right: 15px;
+            }
         }
     }
 }

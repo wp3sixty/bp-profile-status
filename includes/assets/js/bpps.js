@@ -12,6 +12,7 @@
             this.bppsCurrentStatusEdit();
             this.bppsCurrentStatusEditCancel();
             this.bppsCurrentStatusDelete();
+            this.bppsStatusDelete();
         },
         bppsCharacterLimit: function() {
             $( '#bpps_add_new_status' ).on( 'keyup', function( e ) {
@@ -66,12 +67,12 @@
             $( '#bpps-current-status-delete' ).on( 'click', function( e ) {
                 e.preventDefault();
 
-                if( confirm( "Are you sure yu want to delete current status?" ) ) {
+                if( confirm( "Are you sure you want to delete current status?" ) ) {
                     var data = {
                         action: 'bpps_delete_current_status',
                         status: $( '#bpps-current-status-org' ).val( ),
                         nonce: $( '#bpps_delete_current_status_nonce' ).val()
-                    }
+                    };
 
                     $.ajax( {
                         url: ajaxurl,
@@ -81,6 +82,34 @@
                             if( response == '1' ) {
                                 alert( "Current status deleted successfully.!" );
                                 $( '#bpps-current-status' ).html( "No current status is set yet." );
+                            }
+                        }
+                    } );
+                }
+            } );
+        },
+        bppsStatusDelete: function() {
+            $( '.bpps-status-delete' ).on( 'click', function( e ) {
+                e.preventDefault();
+
+                var that = this;
+
+                if( confirm( "Are you sure you want to delete this status?" ) ) {
+                    var data = {
+                        action: 'bpps_delete_status',
+                        status: $( that ).parent().siblings( 'td' ).children( '.bpps_old_status_org' ).val( ),
+                        nonce: $( '#bpps_delete_status_nonce' ).val()
+                    };
+
+                    $.ajax( {
+                        url: ajaxurl,
+                        type: 'post',
+                        data: data,
+                        success: function( response ) {
+                            if( response == '1' ) {
+                                alert( "Status deleted successfully.!" );
+
+                                $( that ).parent().parent().remove();
                             }
                         }
                     } );
