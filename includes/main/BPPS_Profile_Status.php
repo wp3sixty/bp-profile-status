@@ -104,21 +104,27 @@ class BPPS_Profile_Status {
             return;
         }
 
+        $bpps_current_status = get_user_meta( bp_displayed_user_id(), 'bpps_current_status', true );
+        $bpps_old_statuses = get_user_meta( bp_displayed_user_id(), 'bpps_old_statuses', true );
+
         if( ( get_current_user_id() == bp_displayed_user_id() ) ) {
             ?>
             <p><strong><?php echo __( 'Note', 'bp-profile-status' ) . ": "; ?></strong><?php echo __( 'You can store only 10 status. Old status will be deleted if you add more than 10 status.', 'bp-profile-status' ); ?></p>
             <form method="post">
                 <div class="bp-widget bpps-add-new">
-                    <textarea name="bpps_add_new_status" id="bpps_add_new_status" placeholder="Add New Status..."></textarea>
-                    <input type="submit" name="bpps_add_new" id="bpps_add_new" value="Add New" />
-                    <input type="submit" name="bpps_add_new_and_set" id="bpps_add_new_and_set" value="Add New & Set as Current" />
+                    <textarea name="bpps_add_new_status" id="bpps_add_new_status" placeholder="<?php echo __( 'Add New Status...', 'bp-profile-status' ); ?>"></textarea>
+                    <input name="bpps-eidt-status-org" id="bpps-eidt-status-org" type="hidden" value="" />
+                    <input type="submit" name="bpps_add_new" id="bpps_add_new" value="<?php echo __( 'Add New', 'bp-profile-status' ); ?>" />
+                    <input type="submit" name="bpps_add_new_and_set" id="bpps_add_new_and_set" value="<?php echo __( 'Add New & Set as Current', 'bp-profile-status' ); ?>" />
+
+                    <input type="submit" name="bpps_update_status" class="bpps_hide" id="bpps_update_status" value="<?php echo __( 'Update', 'bp-profile-status' ); ?>" />
+                    <input type="submit" name="bpps_update_status_and_set" class="bpps_hide" id="bpps_update_status_and_set" value="<?php echo __( 'Update & Set as Current', 'bp-profile-status' ); ?>" />
+                    <input type="reset" name="bpps_cancel" class="bpps_hide" id="bpps_cancel" value="<?php echo __( 'Cancel', 'bp-profile-status' ); ?>" />
                     <span><span>140</span><?php echo " " . __( 'characters left', 'bp-profile-status' ); ?></span>
                 </div>
             </form>
             <?php
         }
-        $bpps_current_status = get_user_meta( bp_displayed_user_id(), 'bpps_current_status', true );
-        $bpps_old_statuses = get_user_meta( bp_displayed_user_id(), 'bpps_old_statuses', true );
 
         if( !empty( $bpps_old_statuses ) ) {
             if( ($key = array_search( $bpps_current_status, $bpps_old_statuses )) !== false ) {
@@ -138,7 +144,10 @@ class BPPS_Profile_Status {
                             ?>
                             <tr>
                                 <td class="bpps-old-status-count"><?php echo $count; ?></td>
-                                <td><?php echo convert_smilies( $bpps_old_status ); ?></td>
+                                <td>
+                                    <?php echo convert_smilies( $bpps_old_status ); ?>
+                                    <input type="hidden" value="<?php echo $bpps_old_status; ?>" />
+                                </td>
                             </tr>
                             <?php
                             $count++;
@@ -171,6 +180,10 @@ class BPPS_Profile_Status {
                 update_user_meta( $user_id, 'bpps_current_status', trim( $post_array[ 'bpps_add_new_status' ] ) );
 
                 $this->bpps_store_status_usermeta( $user_id, $post_array );
+            } else if( isset( $post_array[ 'bpps_update_status_and_set' ] ) ) {
+                update_user_meta( $user_id, 'bpps_current_status', trim( $post_array[ 'bpps_add_new_status' ] ) );
+
+                $this->bpps_update_status_in_usermeta( $post_array );
             }
         }
     }
@@ -203,13 +216,36 @@ class BPPS_Profile_Status {
         <div id="bpps-current-status">
             <?php
             if( $bpps_current_status ) {
-                echo convert_smilies( $bpps_current_status );
+                ?>
+                <span id="bpps-current-status-text"><?php echo convert_smilies( $bpps_current_status ); ?></span>
+                <?php
+                if( ( get_current_user_id() == bp_displayed_user_id() ) ) {
+                    ?>
+                    <input id="bpps-current-status-org" type="hidden" value="<?php echo $bpps_current_status; ?>" />
+                    <a id="bpps-current-status-edit" title="<?php echo __( 'Edit Current Status', 'bp-profile-status' ); ?>">
+                        <i class="dashicons dashicons-edit"></i>
+                    </a>
+                    <?php
+                }
             } else {
                 echo __( 'No current status is set yet.', 'bp-profile-status' );
             }
             ?>
         </div>
         <?php
+    }
+
+    /*
+     * Update status in usermeta
+     */
+
+    public function bpps_update_status_in_usermeta( $post_array ) {
+        $user_id = get_current_user_id();
+        $bpps_old_statuses = get_user_meta( $user_id, 'bpps_old_statuses', true );
+        $key = array_search( trim( $post_array[ 'bpps-eidt-status-org' ] ), $bpps_old_statuses );
+        $bpps_old_statuses[ $key ] = trim( $post_array[ 'bpps_add_new_status' ] );
+
+        update_user_meta( $user_id, 'bpps_old_statuses', $bpps_old_statuses );
     }
 
 }
