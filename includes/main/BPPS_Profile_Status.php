@@ -20,7 +20,7 @@ class BPPS_Profile_Status {
         if( class_exists( 'BuddyPress' ) ) {
             add_action( 'bp_init', array( $this, 'bpps_add_profile_status_menu' ) );
             add_action( 'bp_template_content', array( $this, 'bpps_content' ), 1 );
-            add_action( 'bp_before_member_header_meta', array( $this, 'bpps_display_current_status' ), 99 );
+            add_action( 'bp_before_member_header_meta', array( $this, 'bpps_display_current_status' ), 9999 );
 
             add_filter( 'bp_settings_admin_nav', array( $this, 'bpps_profile_status_nav' ), 3 );
         }
@@ -54,6 +54,8 @@ class BPPS_Profile_Status {
         );
 
         bp_core_new_subnav_item( $bpps_status );
+
+        $this->bpps_add_new_status_action( $_POST );
     }
 
     function settings_ui() {
@@ -63,7 +65,7 @@ class BPPS_Profile_Status {
             return;
         }
 
-// Load the template
+        // Load the template
         bp_core_load_template( 'members/single/plugins' );
     }
 
@@ -104,6 +106,7 @@ class BPPS_Profile_Status {
 
         if( ( get_current_user_id() == bp_displayed_user_id() ) ) {
             ?>
+            <p><strong><?php echo __( 'Note', 'bp-profile-status' ) . ": "; ?></strong><?php echo __( 'You can store only 10 status. Old status will be deleted if you add more than 10 status.', 'bp-profile-status' ); ?></p>
             <form method="post">
                 <div class="bp-widget bpps-add-new">
                     <textarea name="bpps_add_new_status" id="bpps_add_new_status" placeholder="Add New Status..."></textarea>
@@ -114,9 +117,6 @@ class BPPS_Profile_Status {
             </form>
             <?php
         }
-
-        $this->bpps_add_new_status_action( $_POST );
-
         $bpps_current_status = get_user_meta( bp_displayed_user_id(), 'bpps_current_status', true );
         $bpps_old_statuses = get_user_meta( bp_displayed_user_id(), 'bpps_old_statuses', true );
 
@@ -138,7 +138,7 @@ class BPPS_Profile_Status {
                             ?>
                             <tr>
                                 <td class="bpps-old-status-count"><?php echo $count; ?></td>
-                                <td><?php echo $bpps_old_status; ?></td>
+                                <td><?php echo convert_smilies( $bpps_old_status ); ?></td>
                             </tr>
                             <?php
                             $count++;
@@ -182,8 +182,10 @@ class BPPS_Profile_Status {
     public function bpps_store_status_usermeta( $user_id, $post_array ) {
         $bpps_statuses = get_user_meta( $user_id, 'bpps_old_statuses', true );
 
-        if( !empty( $bpps_statuses ) && !in_array( trim( $post_array[ 'bpps_add_new_status' ] ), $bpps_statuses ) ) {
-            array_unshift( $bpps_statuses, trim( $post_array[ 'bpps_add_new_status' ] ) );
+        if( !empty( $bpps_statuses ) ) {
+            if( !in_array( trim( $post_array[ 'bpps_add_new_status' ] ), $bpps_statuses ) ) {
+                array_unshift( $bpps_statuses, trim( $post_array[ 'bpps_add_new_status' ] ) );
+            }
         } else {
             $bpps_statuses = array( trim( $post_array[ 'bpps_add_new_status' ] ) );
         }
@@ -201,7 +203,7 @@ class BPPS_Profile_Status {
         <div id="bpps-current-status">
             <?php
             if( $bpps_current_status ) {
-                echo $bpps_current_status;
+                echo convert_smilies( $bpps_current_status );
             } else {
                 echo __( 'No current status is set yet.', 'bp-profile-status' );
             }
