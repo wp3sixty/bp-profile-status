@@ -143,9 +143,18 @@
                 e.preventDefault();
 
                 var that = this;
+
+                if( $( that ).parent().siblings( 'td' ).children( '.bpps_old_status_org' ).length > 0 ) {
+                    var status = $( that ).parent().siblings( 'td' ).children( '.bpps_old_status_org' ).val( );
+                } else if( $( that ).siblings( '.bpps-status-org' ).length > 0 ) {
+                    var status = $( that ).siblings( '.bpps-status-org' ).val();
+                } else if( $( that ).siblings( '#bpps-current-status-org' ).length > 0 ) {
+                    var status = $( that ).siblings( '#bpps-current-status-org' ).val();
+                }
+
                 var data = {
                     action: 'bpps_set_current_status',
-                    status: $( that ).parent().siblings( 'td' ).children( '.bpps_old_status_org' ).val( )
+                    status: status
                 };
 
                 $.ajax( {

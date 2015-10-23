@@ -247,16 +247,22 @@ class BPPS_Profile_Status {
             if( $bpps_current_status ) {
                 ?>
                 <span id="bpps-current-status-text"><?php echo convert_smilies( $bpps_current_status ); ?></span>
+                <input id="bpps-current-status-org" type="hidden" value="<?php echo $bpps_current_status; ?>" />
                 <?php
                 if( ( get_current_user_id() == bp_displayed_user_id() ) ) {
+                    echo wp_nonce_field( 'bpps_delete_current_status_nonce', 'bpps_delete_current_status_nonce' );
                     ?>
-                    <input id="bpps-current-status-org" type="hidden" value="<?php echo $bpps_current_status; ?>" />
-                    <?php echo wp_nonce_field( 'bpps_delete_current_status_nonce', 'bpps_delete_current_status_nonce' ); ?>
                     <a id="bpps-current-status-edit" title="<?php echo __( 'Edit Current Status', 'bp-profile-status' ); ?>">
                         <i class="dashicons dashicons-edit"></i>
                     </a>
                     <a id="bpps-current-status-delete" title="<?php echo __( 'Delete Current Status', 'bp-profile-status' ); ?>">
                         <i class="dashicons dashicons-trash"></i>
+                    </a>
+                    <?php
+                } else {
+                    ?>
+                    <a class="bpps-set-status" title="<?php echo __( 'Set as Current Status', 'bp-profile-status' ); ?>">
+                        <i class="dashicons dashicons-yes"></i>
                     </a>
                     <?php
                 }
@@ -296,6 +302,14 @@ class BPPS_Profile_Status {
                 ?>
                 <span class="bpps-status-text"><?php echo convert_smilies( $bpps_status ); ?></span>
                 <?php
+                if( $user_id != get_current_user_id() ) {
+                    ?>
+                    <input class="bpps-status-org" type="hidden" value="<?php echo $bpps_status; ?>" />
+                    <a class="bpps-set-status" title="<?php echo __( 'Set as Current Status', 'bp-profile-status' ); ?>">
+                        <i class="dashicons dashicons-yes"></i>
+                    </a>
+                    <?php
+                }
             } else {
                 echo __( 'No current status is set yet.', 'bp-profile-status' );
             }
