@@ -238,8 +238,12 @@ class BPPS_Profile_Status {
                 if( ( get_current_user_id() == bp_displayed_user_id() ) ) {
                     ?>
                     <input id="bpps-current-status-org" type="hidden" value="<?php echo $bpps_current_status; ?>" />
+                    <?php echo wp_nonce_field( 'bpps_delete_current_status_nonce', 'bpps_delete_current_status_nonce' ); ?>
                     <a id="bpps-current-status-edit" title="<?php echo __( 'Edit Current Status', 'bp-profile-status' ); ?>">
                         <i class="dashicons dashicons-edit"></i>
+                    </a>
+                    <a id="bpps-current-status-delete" title="<?php echo __( 'Delete Current Status', 'bp-profile-status' ); ?>">
+                        <i class="dashicons dashicons-trash"></i>
                     </a>
                     <?php
                 }

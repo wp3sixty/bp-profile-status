@@ -7,12 +7,13 @@
 ( function( $ ) {
 
     window.BPPS = {
-        init: function( ) {
-            this.bppsCharacterLimit( );
-            this.bppsCurrentStatusEdit( );
-            this.bppsCurrentStatusEditCancel( );
+        init: function() {
+            this.bppsCharacterLimit();
+            this.bppsCurrentStatusEdit();
+            this.bppsCurrentStatusEditCancel();
+            this.bppsCurrentStatusDelete();
         },
-        bppsCharacterLimit: function( ) {
+        bppsCharacterLimit: function() {
             $( '#bpps_add_new_status' ).on( 'keyup', function( e ) {
                 var max = 140;
                 var tval = $( this ).val( );
@@ -30,7 +31,7 @@
                 $( '.bpps-add-new span span' ).html( remain );
             } );
         },
-        bppsCurrentStatusEdit: function( ) {
+        bppsCurrentStatusEdit: function() {
             $( '#bpps-current-status-edit' ).on( 'click', function( e ) {
                 e.preventDefault();
 
@@ -59,6 +60,31 @@
                 $( '#bpps_cancel' ).addClass( 'bpps_hide' );
                 $( '#bpps_add_new' ).removeClass( 'bpps_hide' );
                 $( '#bpps_add_new_and_set' ).removeClass( 'bpps_hide' );
+            } );
+        },
+        bppsCurrentStatusDelete: function() {
+            $( '#bpps-current-status-delete' ).on( 'click', function( e ) {
+                e.preventDefault();
+
+                if( confirm( "Are you sure yu want to delete current status?" ) ) {
+                    var data = {
+                        action: 'bpps_delete_current_status',
+                        status: $( '#bpps-current-status-org' ).val( ),
+                        nonce: $( '#bpps_delete_current_status_nonce' ).val()
+                    }
+
+                    $.ajax( {
+                        url: ajaxurl,
+                        type: 'post',
+                        data: data,
+                        success: function( response ) {
+                            if( response == '1' ) {
+                                alert( "Current status deleted successfully.!" );
+                                $( '#bpps-current-status' ).html( "No current status is set yet." );
+                            }
+                        }
+                    } );
+                }
             } );
         }
     };

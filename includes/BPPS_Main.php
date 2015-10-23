@@ -50,6 +50,7 @@ class BPPS_Main {
 
     public function bpps_class_construct() {
         new BPPS_Profile_Status();
+        new BPPS_Main_Ajax();
     }
 
     /*
