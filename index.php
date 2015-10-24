@@ -2,11 +2,11 @@
 
 /*
  * Plugin Name: BP Profile Status
- * Plugin URI: http://bp-profile-status.com/?utm_source=dashboard&utm_medium=plugin&utm_campaign=bp-profile-status
- * Description: Profile status for BuddyPress.
+ * Plugin URI: https://github.com/LittleMonks/bp-profile-status/?utm_source=dashboard&utm_medium=plugin&utm_campaign=bp-profile-status
+ * Description: Profile Status for BuddyPress.
  * Version: 1.0
- * Author: Pranali, Sanket
- * Author URI: http://bp-profile-status.com/?utm_source=dashboard&utm_medium=plugin&utm_campaign=bp-profile-status
+ * Author: littlemonks
+ * Author URI: https://github.com/LittleMonks?utm_source=dashboard&utm_medium=plugin&utm_campaign=bp-profile-status
  * License: GPLv2 or later
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: bp-profile-status
