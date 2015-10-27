@@ -35,13 +35,18 @@ Also, you can set status from other member's profile.
 
 Yes! BP Profile Status works out-of-the-box with nearly every BuddyPress supported theme.
 
+== Screenshots ==
+
+1. My Profile Status
+2. Member's Loop
+
 == Changelog ==
 
 = 1.0 - Oct 24, 2015 =
 * Inital Release
 * Add, Edit, Delete profile status
 * Set profile status from other member's profile
-* Display profile status on member's loop
+* Displaying profile status on member's loop
 
 == Upgrade Notice ==
 
