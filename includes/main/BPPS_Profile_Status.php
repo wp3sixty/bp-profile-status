@@ -15,7 +15,6 @@ class BPPS_Profile_Status {
     /*
      * constructor
      */
-
     public function __construct() {
         if( class_exists( 'BuddyPress' ) ) {
             add_action( 'bp_init', array( $this, 'bpps_add_profile_status_menu' ) );
@@ -30,7 +29,6 @@ class BPPS_Profile_Status {
     /*
      * Adding profile status menu in Profile
      */
-
     public function bpps_add_profile_status_menu() {
         if( bp_displayed_user_domain() ) {
             $user_domain = bp_displayed_user_domain();
@@ -73,7 +71,6 @@ class BPPS_Profile_Status {
     /*
      * Adding status nav in BuddyPress admin navs
      */
-
     public function bpps_profile_status_nav( $wp_admin_nav ) {
         if( bp_displayed_user_domain() ) {
             $user_domain = bp_displayed_user_domain();
@@ -99,7 +96,6 @@ class BPPS_Profile_Status {
     /*
      * UI for adding status
      */
-
     public function bpps_content() {
         if( buddypress()->current_action != 'status' ) {
             return;
@@ -108,7 +104,7 @@ class BPPS_Profile_Status {
         if( ( get_current_user_id() == bp_displayed_user_id() ) ) {
             ?>
             <p><strong><?php echo __( 'Note', 'bp-profile-status' ) . ": "; ?></strong><?php echo __( 'You can store only 10 status. Old status will be deleted if you add more than 10 status.', 'bp-profile-status' ); ?></p>
-            <form method="post">
+            <form method="post" action="">
                 <div class="bp-widget bpps-add-new">
                     <textarea name="bpps_add_new_status" id="bpps_add_new_status" placeholder="<?php echo __( 'Add New Status...', 'bp-profile-status' ); ?>"></textarea>
                     <input name="bpps-eidt-status-org" id="bpps-eidt-status-org" type="hidden" value="" />
@@ -180,7 +176,6 @@ class BPPS_Profile_Status {
     /*
      * Adding new status action
      */
-
     public function bpps_add_new_status_action( $post_array ) {
         if( !empty( $post_array ) && isset( $post_array[ 'bpps_add_new_status' ] ) && $post_array[ 'bpps_add_new_status' ] != '' ) {
             $user_id = get_current_user_id();
@@ -191,6 +186,7 @@ class BPPS_Profile_Status {
                 update_user_meta( $user_id, 'bpps_current_status', trim( $post_array[ 'bpps_add_new_status' ] ) );
 
                 $this->bpps_store_status_usermeta( $user_id, $post_array );
+                $this->bpps_add_status_activity( $user_id, $post_array );
             } else if( isset( $post_array[ 'bpps_update_status_and_set' ] ) ) {
                 update_user_meta( $user_id, 'bpps_current_status', trim( $post_array[ 'bpps_add_new_status' ] ) );
 
@@ -201,10 +197,24 @@ class BPPS_Profile_Status {
         }
     }
 
+    /**
+     * Ading new activity while adding status
+     */
+    public function bpps_add_status_activity( $user_id, $post_array ) {
+        $this_user_profile_url = bp_core_get_user_domain( $user_id );
+        $action_String = "<a href=\"" . $this_user_profile_url . "\">" . bp_core_get_username( $user_id ) . "</a> " . __( 'added new status', 'bp-profile-status' );
+        $params = array(
+            'action' => $action_String,
+            'content' => $post_array[ 'bpps_add_new_status' ],
+            'component' => 'activity',
+            'type' => 'bpps_activity_update',
+        );
+        bp_activity_add( $params );
+    }
+
     /*
      * Storing new statuses in user meta
      */
-
     public function bpps_store_status_usermeta( $user_id, $post_array ) {
         $bpps_statuses = get_user_meta( $user_id, 'bpps_old_statuses', true );
 
@@ -238,7 +248,6 @@ class BPPS_Profile_Status {
     /*
      * Displaying current status
      */
-
     public function bpps_display_current_status() {
         $bpps_current_status = get_user_meta( bp_displayed_user_id(), 'bpps_current_status', true );
         ?>
@@ -277,7 +286,6 @@ class BPPS_Profile_Status {
     /*
      * Update status in usermeta
      */
-
     public function bpps_update_status_in_usermeta( $post_array ) {
         $user_id = get_current_user_id();
         $bpps_old_statuses = get_user_meta( $user_id, 'bpps_old_statuses', true );
@@ -291,7 +299,6 @@ class BPPS_Profile_Status {
     /*
      * Displaying current status on member list
      */
-
     public function bpps_display_current_status_member_list() {
         $user_id = bp_get_member_user_id();
         $bpps_status = get_user_meta( $user_id, 'bpps_current_status', true );

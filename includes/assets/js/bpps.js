@@ -164,8 +164,8 @@
                     success: function( response ) {
                         if( response == '1' ) {
                             alert( bpps_main_js.bpps_status_set_success );
-
-                            window.location.reload();
+                            
+                            window.location = window.location;
                         }
                     }
                 } );
