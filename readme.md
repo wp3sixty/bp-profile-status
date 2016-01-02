@@ -6,8 +6,8 @@ Using BP Profile Status plugin you can set status in your BuddyPress Profile.
 **Contributors:** [littlemonks](https://profiles.wordpress.org/littlemonks), [sanket.parmar](https://profiles.wordpress.org/sanket.parmar), [pranalipatel](https://profiles.wordpress.org/pranalipatel)  
 **Tags:** [status](https://wordpress.org/plugins/tags/status), [profile](https://wordpress.org/plugins/tags/profile), [members](https://wordpress.org/plugins/tags/members), [buddypress](https://wordpress.org/plugins/tags/buddypress)  
 **Requires at least:** WordPress 4.0  
-**Tested up to:** WordPress 4.3.1  
-**Stable tag:** 1.0.1  
+**Tested up to:** WordPress 4.4  
+**Stable tag:** 1.1  
 **License:** [GPLv2 or later](http://www.gnu.org/licenses/gpl-2.0.html)  
 
 ## Description ##
@@ -47,6 +47,10 @@ Yes! BP Profile Status works out-of-the-box with nearly every BuddyPress support
 
 ## Changelog ##
 
+### 1.1 - Jan 02, 2016 ###
+* Added BuddyPress activity for profile status
+* Fixed page reload bug
+
 ### 1.0.1 - Oct 24, 2015 ###
 * Inital Release
 * Add, Edit, Delete profile status
@@ -56,7 +60,7 @@ Yes! BP Profile Status works out-of-the-box with nearly every BuddyPress support
 
 ## Upgrade Notice ##
 
-### 1.0.1 - Oct 24, 2015 ###
-Add, Edit, Delete profile status, set from there member's profile
+### 1.1 - Jan 02, 2016 ###
+Added BuddyPress activity for profile status and fixed page reload bug
 
 
