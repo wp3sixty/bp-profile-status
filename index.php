@@ -4,7 +4,7 @@
  * Plugin Name: BP Profile Status
  * Plugin URI: https://github.com/LittleMonks/bp-profile-status/?utm_source=dashboard&utm_medium=plugin&utm_campaign=bp-profile-status
  * Description: Profile Status for BuddyPress.
- * Version: 1.1
+ * Version: 1.1.0
  * Author: littlemonks
  * Author URI: https://github.com/LittleMonks?utm_source=dashboard&utm_medium=plugin&utm_campaign=bp-profile-status
  * License: GPLv2 or later
@@ -37,7 +37,7 @@ if( !defined( 'BPPS_BASE_NAME' ) ) {
  * The version of the plugin
  */
 if( !defined( 'BPPS_VERSION' ) ) {
-    define( 'BPPS_VERSION', '1.1' );
+    define( 'BPPS_VERSION', '1.1.0' );
 }
 
 /**
