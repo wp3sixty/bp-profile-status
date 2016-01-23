@@ -38,17 +38,12 @@
             $( '#bpps-current-status-edit' ).on( 'click', function( e ) {
                 e.preventDefault();
 
-                var bpps_current_status = $( this ).parent().find( '#bpps-current-status-org' ).val();
+                var bpps_current_status = $( '#bpps-current-status-org' ).val();
 
-                $( '#bpps_add_new_status' ).val( bpps_current_status );
-                $( '#bpps-eidt-status-org' ).val( bpps_current_status );
-                $( '#bpps_add_new_status' ).focus();
-                $( '#bpps_add_new_status' ).trigger( 'keyup' );
-                $( '#bpps_add_new' ).addClass( 'bpps_hide' );
-                $( '#bpps_add_new_and_set' ).addClass( 'bpps_hide' );
-                $( '#bpps_update_status_and_set' ).val( bpps_main_js.bpps_update );
-                $( '#bpps_update_status_and_set' ).removeClass( 'bpps_hide' );
-                $( '#bpps_cancel' ).removeClass( 'bpps_hide' );
+                $( '#bpps-current-status-text, #bpps-current-status-edit, #bpps-current-status-delete' ).addClass( 'bpps_hide' );
+                $( '#bpps-current-status-direct-edit' ).removeClass( 'bpps_hide' );
+                $( '#bpps-current-status-textarea' ).val( bpps_current_status );
+                $( '#bpps-current-status-textarea' ).focus();
             } );
         },
         bppsCurrentStatusEditCancel: function() {
@@ -64,6 +59,11 @@
                 $( '#bpps_cancel' ).addClass( 'bpps_hide' );
                 $( '#bpps_add_new' ).removeClass( 'bpps_hide' );
                 $( '#bpps_add_new_and_set' ).removeClass( 'bpps_hide' );
+            } );
+
+            $( '#bpps_cancel_update' ).on( 'click', function( e ) {
+                $( '#bpps-current-status-text, #bpps-current-status-edit, #bpps-current-status-delete' ).removeClass( 'bpps_hide' );
+                $( '#bpps-current-status-direct-edit' ).addClass( 'bpps_hide' );
             } );
         },
         bppsCurrentStatusDelete: function() {
@@ -164,7 +164,7 @@
                     success: function( response ) {
                         if( response == '1' ) {
                             alert( bpps_main_js.bpps_status_set_success );
-                            
+
                             window.location = window.location;
                         }
                     }

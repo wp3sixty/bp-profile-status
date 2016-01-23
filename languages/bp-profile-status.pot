@@ -1,14 +1,14 @@
-# Copyright (C) 2015 Pranali, Sanket
+# Copyright (C) 2016 wp3sixty
 # This file is distributed under the GPLv2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: BP Profile Status 1.0\n"
+"Project-Id-Version: BP Profile Status 1.1.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-10-23 23:53:23+00:00\n"
+"POT-Creation-Date: 2016-01-23 12:00:50+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2015-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2016-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Sanket <sanket.parmar11@gmail.com>\n"
 "Language-Team: Sanket <sanket.parmar11@gmail.com>\n"
 "X-Generator: grunt-wp-i18n 0.5.3\n"
@@ -31,11 +31,11 @@ msgid ""
 "Please revise it.!"
 msgstr ""
 
-#: includes/BPPS_Main.php:73 includes/main/BPPS_Profile_Status.php:118
+#: includes/BPPS_Main.php:73 includes/main/BPPS_Profile_Status.php:114
 msgid "Update"
 msgstr ""
 
-#: includes/BPPS_Main.php:74 includes/main/BPPS_Profile_Status.php:119
+#: includes/BPPS_Main.php:74 includes/main/BPPS_Profile_Status.php:115
 msgid "Update & Set as Current"
 msgstr ""
 
@@ -47,8 +47,8 @@ msgstr ""
 msgid "Current status deleted successfully.!"
 msgstr ""
 
-#: includes/BPPS_Main.php:77 includes/main/BPPS_Profile_Status.php:270
-#: includes/main/BPPS_Profile_Status.php:314
+#: includes/BPPS_Main.php:77 includes/main/BPPS_Profile_Status.php:279
+#: includes/main/BPPS_Profile_Status.php:321
 msgid "No current status is set yet."
 msgstr ""
 
@@ -64,67 +64,72 @@ msgstr ""
 msgid "Status set successfully.!"
 msgstr ""
 
-#: includes/main/BPPS_Profile_Status.php:45
+#: includes/main/BPPS_Main_Ajax.php:101
+#: includes/main/BPPS_Profile_Status.php:205
+msgid "added new status"
+msgstr ""
+
+#: includes/main/BPPS_Profile_Status.php:43
 msgid "Status"
 msgstr ""
 
-#: includes/main/BPPS_Profile_Status.php:110
+#: includes/main/BPPS_Profile_Status.php:106
 msgid "Note"
 msgstr ""
 
-#: includes/main/BPPS_Profile_Status.php:110
+#: includes/main/BPPS_Profile_Status.php:106
 msgid ""
 "You can store only 10 status. Old status will be deleted if you add more "
 "than 10 status."
 msgstr ""
 
-#: includes/main/BPPS_Profile_Status.php:113
+#: includes/main/BPPS_Profile_Status.php:109
 msgid "Add New Status..."
 msgstr ""
 
-#: includes/main/BPPS_Profile_Status.php:115
+#: includes/main/BPPS_Profile_Status.php:111
 msgid "Add New"
 msgstr ""
 
-#: includes/main/BPPS_Profile_Status.php:116
+#: includes/main/BPPS_Profile_Status.php:112
 msgid "Add New & Set as Current"
 msgstr ""
 
-#: includes/main/BPPS_Profile_Status.php:120
+#: includes/main/BPPS_Profile_Status.php:116
 msgid "Cancel"
 msgstr ""
 
-#: includes/main/BPPS_Profile_Status.php:121
+#: includes/main/BPPS_Profile_Status.php:117
 msgid "characters left"
 msgstr ""
 
-#: includes/main/BPPS_Profile_Status.php:137
+#: includes/main/BPPS_Profile_Status.php:133
 msgid "Old Statuses"
 msgstr ""
 
-#: includes/main/BPPS_Profile_Status.php:151
-#: includes/main/BPPS_Profile_Status.php:264
-#: includes/main/BPPS_Profile_Status.php:308
+#: includes/main/BPPS_Profile_Status.php:147
+#: includes/main/BPPS_Profile_Status.php:273
+#: includes/main/BPPS_Profile_Status.php:315
 msgid "Set as Current Status"
 msgstr ""
 
-#: includes/main/BPPS_Profile_Status.php:155
+#: includes/main/BPPS_Profile_Status.php:151
 msgid "Edit this Status"
 msgstr ""
 
-#: includes/main/BPPS_Profile_Status.php:158
+#: includes/main/BPPS_Profile_Status.php:154
 msgid "Delete this Status"
 msgstr ""
 
-#: includes/main/BPPS_Profile_Status.php:169
+#: includes/main/BPPS_Profile_Status.php:165
 msgid "No statuses available."
 msgstr ""
 
-#: includes/main/BPPS_Profile_Status.php:255
+#: includes/main/BPPS_Profile_Status.php:264
 msgid "Edit Current Status"
 msgstr ""
 
-#: includes/main/BPPS_Profile_Status.php:258
+#: includes/main/BPPS_Profile_Status.php:267
 msgid "Delete Current Status"
 msgstr ""
 
@@ -132,21 +137,27 @@ msgstr ""
 msgid "BP Profile Status"
 msgstr ""
 
-#. Author URI of the plugin/theme
+#. Plugin URI of the plugin/theme
 msgid ""
-"http://bp-profile-status.com/?utm_source=dashboard&utm_medium=plugin&utm_"
-"campaign=bp-profile-status"
+"https://github.com/wp3sixty/bp-profile-status/?utm_source=dashboard&utm_"
+"medium=plugin&utm_campaign=bp-profile-status"
 msgstr ""
 
 #. Description of the plugin/theme
-msgid "Profile status for BuddyPress."
+msgid "Profile Status for BuddyPress."
 msgstr ""
 
 #. Author of the plugin/theme
-msgid "Pranali, Sanket"
+msgid "wp3sixty"
 msgstr ""
 
-#: includes/main/BPPS_Profile_Status.php:92
+#. Author URI of the plugin/theme
+msgid ""
+"https://github.com/wp3sixty?utm_source=dashboard&utm_medium=plugin&utm_"
+"campaign=bp-profile-status"
+msgstr ""
+
+#: includes/main/BPPS_Profile_Status.php:89
 msgctxt "My Profile Status sub nav"
 msgid "Status"
 msgstr ""

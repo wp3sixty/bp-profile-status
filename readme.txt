@@ -1,5 +1,5 @@
 === BP Profile Status ===
-Contributors: littlemonks, sanket.parmar, pranalipatel
+Contributors: wp3sixty, sanket.parmar, pranalipatel
 Tags: status, profile, members, buddypress
 Requires at least: WordPress 4.0
 Tested up to: WordPress 4.4

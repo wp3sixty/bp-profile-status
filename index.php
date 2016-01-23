@@ -2,11 +2,11 @@
 
 /*
  * Plugin Name: BP Profile Status
- * Plugin URI: https://github.com/LittleMonks/bp-profile-status/?utm_source=dashboard&utm_medium=plugin&utm_campaign=bp-profile-status
+ * Plugin URI: https://github.com/wp3sixty/bp-profile-status/?utm_source=dashboard&utm_medium=plugin&utm_campaign=bp-profile-status
  * Description: Profile Status for BuddyPress.
  * Version: 1.1.1
- * Author: littlemonks
- * Author URI: https://github.com/LittleMonks?utm_source=dashboard&utm_medium=plugin&utm_campaign=bp-profile-status
+ * Author: wp3sixty
+ * Author URI: https://github.com/wp3sixty?utm_source=dashboard&utm_medium=plugin&utm_campaign=bp-profile-status
  * License: GPLv2 or later
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: bp-profile-status
@@ -44,6 +44,7 @@ if( !defined( 'BPPS_VERSION' ) ) {
  * Register the autoloader function into spl_autoload
  */
 spl_autoload_register( 'bpps_autoloader' );
+
 /**
  * Auto Loader Function
  *

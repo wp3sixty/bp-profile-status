@@ -42,7 +42,8 @@ and open the template in the editor.
 .bpps-add-new > span {
   float: right;
 }
-.bpps-add-new .bpps_hide {
+
+.bpps_hide {
   display: none;
 }
 
