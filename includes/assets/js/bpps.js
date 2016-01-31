@@ -82,7 +82,7 @@
 						type: 'post',
 						data: data,
 						success: function( response ) {
-							if ( response == '1' ) {
+							if ( response.success ) {
 								alert( bpps_main_js.i18n.bpps_delete_current_status_success );
 								$( '#bpps-current-status' ).html( bpps_main_js.i18n.bpps_no_current_status_set );
 							}
@@ -109,7 +109,7 @@
 						type: 'post',
 						data: data,
 						success: function( response ) {
-							if ( response == '1' ) {
+							if ( response.sucess ) {
 								alert( bpps_main_js.i18n.bpps_status_delete_success );
 
 								$( that ).parent().parent().remove();
@@ -163,7 +163,7 @@
 					type: 'post',
 					data: data,
 					success: function( response ) {
-						if ( response == '1' ) {
+						if ( response.success ) {
 							alert( bpps_main_js.i18n.bpps_status_set_success );
 
 							window.location = window.location;
