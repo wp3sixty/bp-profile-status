@@ -51,7 +51,7 @@ class BPPS_Profile_Status {
 
 		bp_core_new_subnav_item( $bpps_status );
 
-		$this->bpps_add_new_status_action( $_POST );
+		$this->bpps_add_new_status_action( wp_unslash( $_POST ) );
 	}
 
 	function settings_ui() {
