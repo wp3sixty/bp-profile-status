@@ -51,7 +51,7 @@ class BPPS_Profile_Status {
 
 		bp_core_new_subnav_item( $bpps_status );
 
-		//      $this->bpps_add_new_status_action( $_POST );
+		$this->bpps_add_new_status_action( $_POST );
 	}
 
 	function settings_ui() {
@@ -106,6 +106,7 @@ class BPPS_Profile_Status {
 				<strong><?php esc_html_e( 'Note', 'bp-profile-status' ) . ': '; ?></strong><?php esc_html_e( 'You can store only 10 status. Old status will be deleted if you add more than 10 status.', 'bp-profile-status' ); ?>
 			</p>
 			<form method="post" action="" enctype="multipart/form-data">
+				<?php wp_nonce_field( 'bp-profile-action', 'nonce' ); ?>
 				<div class="bp-widget bpps-add-new">
 					<textarea name="bpps_add_new_status" id="bpps_add_new_status"
 					          placeholder="<?php esc_attr_e( 'Add New Status...', 'bp-profile-status' ); ?>"></textarea>
@@ -148,7 +149,7 @@ class BPPS_Profile_Status {
 						?>
 						<tr>
 							<td>
-								<?php echo wp_kses( convert_smilies( $bpps_old_status ) ); ?>
+								<?php echo wp_kses_post( convert_smilies( $bpps_old_status ) ); ?>
 								<input type="hidden" class="bpps_old_status_org"
 								       value="<?php echo esc_attr( $bpps_old_status ); ?>"/>
 							</td>
@@ -190,6 +191,12 @@ class BPPS_Profile_Status {
      */
 
 	public function bpps_add_new_status_action( $post_array ) {
+		if ( false === isset( $post_array[ 'nonce' ] ) ) {
+			return;
+		}
+		if ( false === wp_verify_nonce( $post_array[ 'nonce' ], 'bp-profile-action' ) ) {
+			return;
+		}
 		if ( ! empty( $post_array ) && ( ( isset( $post_array['bpps_add_new_status'] ) && '' !== $post_array['bpps_add_new_status'] ) || ( isset( $post_array['bpps-current-status-textarea'] ) && '' !== $post_array['bpps-current-status-textarea'] ) ) ) {
 			$user_id = get_current_user_id();
 
@@ -274,7 +281,7 @@ class BPPS_Profile_Status {
 			<?php
 			if ( $bpps_current_status ) {
 				?>
-				<span id="bpps-current-status-text"><?php echo wp_kses( convert_smilies( $bpps_current_status ) ); ?></span>
+				<span id="bpps-current-status-text"><?php echo wp_kses_post( convert_smilies( $bpps_current_status ) ); ?></span>
 				<form method="post" action="" enctype="multipart/form-data" class="bpps_hide"
 				      id="bpps-current-status-direct-edit">
 					<input id="bpps-current-status-org" name="bpps-current-status-org" type="hidden"
