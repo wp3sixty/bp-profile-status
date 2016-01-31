@@ -108,20 +108,20 @@ class BPPS_Profile_Status {
 			<form method="post" action="" enctype="multipart/form-data">
 				<div class="bp-widget bpps-add-new">
 					<textarea name="bpps_add_new_status" id="bpps_add_new_status"
-					          placeholder="<?php esc_attr_e_( 'Add New Status...', 'bp-profile-status' ); ?>"></textarea>
+					          placeholder="<?php esc_attr_e( 'Add New Status...', 'bp-profile-status' ); ?>"></textarea>
 					<input name="bpps-eidt-status-org" id="bpps-eidt-status-org" type="hidden" value=""/>
 					<input type="submit" name="bpps_add_new" id="bpps_add_new"
-					       value="<?php esc_attr_e_( 'Add New', 'bp-profile-status' ); ?>"/>
+					       value="<?php esc_attr_e( 'Add New', 'bp-profile-status' ); ?>"/>
 					<input type="submit" name="bpps_add_new_and_set" id="bpps_add_new_and_set"
-					       value="<?php esc_attr_e_( 'Add New & Set as Current', 'bp-profile-status' ); ?>"/>
+					       value="<?php esc_attr_e( 'Add New & Set as Current', 'bp-profile-status' ); ?>"/>
 
 					<input type="submit" name="bpps_update_status" class="bpps_hide" id="bpps_update_status"
-					       value="<?php esc_attr_e_( 'Update', 'bp-profile-status' ); ?>"/>
+					       value="<?php esc_attr_e( 'Update', 'bp-profile-status' ); ?>"/>
 					<input type="submit" name="bpps_update_status_and_set" class="bpps_hide"
 					       id="bpps_update_status_and_set"
-					       value="<?php esc_attr_e_( 'Update & Set as Current', 'bp-profile-status' ); ?>"/>
+					       value="<?php esc_attr_e( 'Update & Set as Current', 'bp-profile-status' ); ?>"/>
 					<input type="reset" name="bpps_cancel" class="bpps_hide" id="bpps_cancel"
-					       value="<?php esc_attr_e_( 'Cancel', 'bp-profile-status' ); ?>"/>
+					       value="<?php esc_attr_e( 'Cancel', 'bp-profile-status' ); ?>"/>
 					<span><span>140</span>&nbsp;<?php esc_attr_e( 'characters left', 'bp-profile-status' ); ?></span>
 				</div>
 			</form>
