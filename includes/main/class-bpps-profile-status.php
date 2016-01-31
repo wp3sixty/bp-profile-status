@@ -51,7 +51,9 @@ class BPPS_Profile_Status {
 
 		bp_core_new_subnav_item( $bpps_status );
 
-		$this->bpps_add_new_status_action( wp_unslash( $_POST ) );
+		if ( isset( $post_array['nonce'] ) && wp_verify_nonce( $post_array['nonce'], 'bp-profile-action' ) ) {
+			$this->bpps_add_new_status_action( wp_unslash( $_POST ) );
+		}
 	}
 
 	function settings_ui() {
@@ -191,12 +193,6 @@ class BPPS_Profile_Status {
      */
 
 	public function bpps_add_new_status_action( $post_array ) {
-		if ( false === isset( $post_array[ 'nonce' ] ) ) {
-			return;
-		}
-		if ( false === wp_verify_nonce( $post_array[ 'nonce' ], 'bp-profile-action' ) ) {
-			return;
-		}
 		if ( ! empty( $post_array ) && ( ( isset( $post_array['bpps_add_new_status'] ) && '' !== $post_array['bpps_add_new_status'] ) || ( isset( $post_array['bpps-current-status-textarea'] ) && '' !== $post_array['bpps-current-status-textarea'] ) ) ) {
 			$user_id = get_current_user_id();
 
