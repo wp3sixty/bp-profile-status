@@ -127,6 +127,8 @@ module.exports = function( grunt ) {
         }
 
     } );
+
     // register task
+    grunt.registerTask( 'build', [ 'sass', 'autoprefixer', 'uglify', 'checktextdomain', 'makepot' ] );
     grunt.registerTask( 'default', [ 'sass', 'autoprefixer', 'uglify', 'checktextdomain', 'makepot', 'watch' ] );
 };
