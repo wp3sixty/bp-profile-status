@@ -219,9 +219,9 @@ class BPPS_Profile_Status {
 	 */
 	public function bpps_add_status_activity( $user_id, $post_array ) {
 		$this_user_profile_url = bp_core_get_user_domain( $user_id );
-		$action_String         = '<a href="' . $this_user_profile_url . '">' . bp_core_get_username( $user_id ) . '</a> ' . __( 'added new status', 'bp-profile-status' );
+		$action_string         = '<a href="' . $this_user_profile_url . '">' . bp_core_get_username( $user_id ) . '</a> ' . __( 'added new status', 'bp-profile-status' );
 		$params                = array(
-			'action'    => $action_String,
+			'action'    => $action_string,
 			'content'   => $post_array['bpps_add_new_status'],
 			'component' => 'activity',
 			'type'      => 'bpps_activity_update',

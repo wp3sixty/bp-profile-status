@@ -108,9 +108,9 @@ class BPPS_Main_Ajax {
 		update_user_meta( $user_id, 'bpps_old_statuses', $bpps_statuses );
 
 		$this_user_profile_url = bp_core_get_user_domain( $user_id );
-		$action_String         = '<a href="' . esc_url( $this_user_profile_url ) . '">' . esc_html( htmlentities( bp_core_get_username( $user_id ) ) ) . '</a> ' . esc_html__( 'added new status', 'bp-profile-status' );
+		$action_string         = '<a href="' . esc_url( $this_user_profile_url ) . '">' . esc_html( htmlentities( bp_core_get_username( $user_id ) ) ) . '</a> ' . esc_html__( 'added new status', 'bp-profile-status' );
 		$params                = array(
-			'action'    => $action_String,
+			'action'    => $action_string,
 			'content'   => $current_status,
 			'component' => 'activity',
 			'type'      => 'bpps_activity_update',
