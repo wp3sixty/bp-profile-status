@@ -154,6 +154,16 @@ class BP_Profile_Status {
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
 
+		/**
+		 * Detect plugin. For use on Front End only.
+		 */
+		include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+
+		// Checking if BuddyPress plugin is activated.
+		if ( true === is_plugin_active( 'buddypress/bp-loader.php' ) ) {
+			$this->loader->add_action( 'bp_init', $plugin_public, 'bpps_add_profile_status_menu' );
+		}
+
 	}
 
 	/**

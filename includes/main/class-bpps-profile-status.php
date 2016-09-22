@@ -14,57 +14,12 @@ class BPPS_Profile_Status {
 		if ( false === class_exists( 'BuddyPress' ) ) {
 			return;
 		}
-		add_action( 'bp_init', array( $this, 'bpps_add_profile_status_menu' ) );
+
 		add_action( 'bp_template_content', array( $this, 'bpps_content' ), 1 );
 		add_action( 'bp_before_member_header_meta', array( $this, 'bpps_display_current_status' ) );
 		add_action( 'bp_directory_members_item', array( $this, 'bpps_display_current_status_member_list' ) );
 
 		add_filter( 'bp_settings_admin_nav', array( $this, 'bpps_profile_status_nav' ), 3 );
-	}
-
-	/*
-     * Adding profile status menu in Profile
-     */
-
-	public function bpps_add_profile_status_menu() {
-		if ( bp_displayed_user_domain() ) {
-			$user_domain = bp_displayed_user_domain();
-		} elseif ( bp_loggedin_user_domain() ) {
-			$user_domain = bp_loggedin_user_domain();
-		} else {
-			return;
-		}
-
-		$proflie_link = trailingslashit( $user_domain . 'profile' );
-		$bpps_status  = array(
-			'name'            => __( 'Status', 'bp-profile-status' ), // Display name for the nav item
-			'slug'            => 'status', // URL slug for the nav item
-			'parent_slug'     => 'profile', // URL slug of the parent nav item
-			'parent_url'      => $proflie_link, // URL of the parent item
-			'item_css_id'     => 'bpps-status', // The CSS ID to apply to the HTML of the nav item
-			'user_has_access' => true, // Can the logged in user see this nav item?
-			'site_admin_only' => false, // Can only site admins see this nav item?
-			'position'        => 80, // Index of where this nav item should be positioned
-			'screen_function' => array( $this, 'settings_ui' ), // The name of the function to run when clicked
-			'link'            => '',// The link for the subnav item; optional, not usually required.
-		);
-
-		bp_core_new_subnav_item( $bpps_status );
-
-		if ( isset( $_POST['nonce'] ) && wp_verify_nonce( $_POST['nonce'], 'bp-profile-action' ) ) {
-			$this->bpps_add_new_status_action( wp_unslash( $_POST ) );
-		}
-	}
-
-	function settings_ui() {
-		if ( bp_action_variables() ) {
-			bp_do_404();
-
-			return;
-		}
-
-		// Load the template
-		bp_core_load_template( 'members/single/plugins' );
 	}
 
 	/*

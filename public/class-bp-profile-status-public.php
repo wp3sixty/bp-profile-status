@@ -136,4 +136,64 @@ class BP_Profile_Status_Public {
 
 	}
 
+	/**
+	 * Adding profile status menu in BuddyPress Profile
+	 *
+	 * @since   1.0.0
+	 *
+	 * @access  public
+	 */
+	public function bpps_add_profile_status_menu() {
+
+		if ( bp_displayed_user_domain() ) {
+			$user_domain = bp_displayed_user_domain();
+		} elseif ( bp_loggedin_user_domain() ) {
+			$user_domain = bp_loggedin_user_domain();
+		} else {
+			return;
+		}
+
+		// Creating profile link of user.
+		$proflie_link   = trailingslashit( $user_domain . 'profile' );
+		$bpps_status    = array(
+			'name'              => esc_html__( 'Status', 'bp-profile-status' ), // Display name for the nav item
+			'slug'              => 'status', // URL slug for the nav item
+			'parent_slug'       => 'profile', // URL slug of the parent nav item
+			'parent_url'        => $proflie_link, // URL of the parent item
+			'item_css_id'       => 'bpps-status', // The CSS ID to apply to the HTML of the nav item
+			'user_has_access'   => true, // Can the logged in user see this nav item?
+			'site_admin_only'   => false, // Can only site admins see this nav item?
+			'position'          => 80, // Index of where this nav item should be positioned
+			'screen_function'   => array( $this, 'settings_ui' ), // The name of the function to run when clicked
+			'link'              => '',// The link for the subnav item; optional, not usually required.
+		);
+
+		// Adding Status menu to BuddyPress profile navigation.
+		bp_core_new_subnav_item( $bpps_status );
+
+		if ( isset( $_POST['nonce'] ) && wp_verify_nonce( $_POST['nonce'], 'bp-profile-action' ) ) {
+			$this->bpps_add_new_status_action( wp_unslash( $_POST ) );
+		}
+
+	}
+
+	/**
+	 * Loading BuddyPress - Users Plugins Template
+	 *
+	 * @since   1.0.0
+	 *
+	 * @access  public
+	 */
+	function settings_ui() {
+
+		if ( bp_action_variables() ) {
+			bp_do_404();
+
+			return;
+		}
+
+		// Load the template
+		bp_core_load_template( 'members/single/plugins' );
+	}
+
 }
