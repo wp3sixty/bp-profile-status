@@ -51,7 +51,7 @@ class BPPS_Profile_Status {
 
 		bp_core_new_subnav_item( $bpps_status );
 
-		if ( isset( $post_array['nonce'] ) && wp_verify_nonce( $post_array['nonce'], 'bp-profile-action' ) ) {
+		if ( isset( $_POST['nonce'] ) && wp_verify_nonce( $_POST['nonce'], 'bp-profile-action' ) ) {
 			$this->bpps_add_new_status_action( wp_unslash( $_POST ) );
 		}
 	}
