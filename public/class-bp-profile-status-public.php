@@ -117,6 +117,23 @@ class BP_Profile_Status_Public {
 
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/' . $file_name, array( 'jquery' ), $this->version, false );
 
+		$bpps_localize_array = array(
+			'bpps_max_character_alert'              => esc_html__( 'You have reached max character limit. \n\nPlease revise it.!', 'bp-profile-status' ),
+			'bpps_update'                           => esc_html__( 'Update', 'bp-profile-status' ),
+			'bpps_update_and_set_as_current'        => esc_html__( 'Update & Set as Current', 'bp-profile-status' ),
+			'bpps_delete_current_status_confirm'    => esc_html__( 'Are you sure you want to delete current status?', 'bp-profile-status' ),
+			'bpps_delete_current_status_success'    => esc_html__( 'Current status deleted successfully.!', 'bp-profile-status' ),
+			'bpps_no_current_status_set'            => esc_html__( 'No current status is set yet.', 'bp-profile-status' ),
+			'bpps_delete_status_confirm'            => esc_html__( 'Are you sure you want to delete this status?', 'bp-profile-status' ),
+			'bpps_status_delete_success'            => esc_html__( 'Status deleted successfully.!', 'bp-profile-status' ),
+			'bpps_status_set_success'               => esc_html__( 'Status set successfully.!', 'bp-profile-status' ),
+		);
+
+		wp_localize_script( $this->plugin_name, 'bpps_main_js', array(
+			'set_current_status_nonce' => wp_create_nonce( 'set_current_status_nonce' ),
+			'i18n'  => $bpps_localize_array,
+		) );
+
 	}
 
 }
