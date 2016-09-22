@@ -1,43 +1,29 @@
-# Copyright (C) 2016 wp3sixty
-# This file is distributed under the GPLv2 or later.
+# Copyright (C) 2016 BP Profile Status
+# This file is distributed under the same license as the BP Profile Status package.
 msgid ""
 msgstr ""
-"Project-Id-Version: BP Profile Status 1.2\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-01-31 11:33:47+00:00\n"
+"Project-Id-Version: BP Profile Status\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "PO-Revision-Date: 2016-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Sanket <sanket.parmar11@gmail.com>\n"
-"Language-Team: Sanket <sanket.parmar11@gmail.com>\n"
-"X-Generator: grunt-wp-i18n 0.5.3\n"
-"X-Poedit-KeywordsList: "
-"__;_e;_x:1,2c;_ex:1,2c;_n:1,2;_nx:1,2,4c;_n_noop:1,2;_nx_noop:1,2,3c;esc_"
-"attr__;esc_html__;esc_attr_e;esc_html_e;esc_attr_x:1,2c;esc_html_x:1,2c;\n"
-"Language: en\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Poedit-Country: United States\n"
+"Last-Translator: Sanket Parmar <sanket.parmar11@gmail.com>\n"
+"Language-Team: Sanket Parmar <sanket.parmar11@gmail.com>\n"
+"X-Poedit-Basepath: ..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-Basepath: ../\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
 "X-Poedit-SearchPath-0: .\n"
-"X-Poedit-Bookmarks: \n"
-"X-Textdomain-Support: yes\n"
-
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 #: includes/class-bpps-main.php:73
-msgid ""
-"You have reached max character limit. \\n"
-"\\n"
-"Please revise it.!"
+msgid "You have reached max character limit. nnPlease revise it.!"
 msgstr ""
 
-#: includes/class-bpps-main.php:74
-#: includes/main/class-bpps-profile-status.php:119
+#: includes/class-bpps-main.php:74, includes/main/class-bpps-profile-status.php:122
 msgid "Update"
 msgstr ""
 
-#: includes/class-bpps-main.php:75
-#: includes/main/class-bpps-profile-status.php:122
+#: includes/class-bpps-main.php:75, includes/main/class-bpps-profile-status.php:125
 msgid "Update & Set as Current"
 msgstr ""
 
@@ -49,9 +35,7 @@ msgstr ""
 msgid "Current status deleted successfully.!"
 msgstr ""
 
-#: includes/class-bpps-main.php:78
-#: includes/main/class-bpps-profile-status.php:308
-#: includes/main/class-bpps-profile-status.php:360
+#: includes/class-bpps-main.php:78, includes/main/class-bpps-profile-status.php:311, includes/main/class-bpps-profile-status.php:363
 msgid "No current status is set yet."
 msgstr ""
 
@@ -67,8 +51,7 @@ msgstr ""
 msgid "Status set successfully.!"
 msgstr ""
 
-#: includes/main/class-bpps-main-ajax.php:111
-#: includes/main/class-bpps-profile-status.php:222
+#: includes/main/class-bpps-main-ajax.php:111, includes/main/class-bpps-profile-status.php:225
 msgid "added new status"
 msgstr ""
 
@@ -76,91 +59,63 @@ msgstr ""
 msgid "Status"
 msgstr ""
 
-#: includes/main/class-bpps-profile-status.php:106
+#: includes/main/class-bpps-profile-status.php:89
+msgctxt "My Profile Status sub nav"
+msgid "Status"
+msgstr ""
+
+#: includes/main/class-bpps-profile-status.php:108
 msgid "Note"
 msgstr ""
 
-#: includes/main/class-bpps-profile-status.php:106
-msgid ""
-"You can store only 10 status. Old status will be deleted if you add more "
-"than 10 status."
-msgstr ""
-
-#: includes/main/class-bpps-profile-status.php:111
-msgid "Add New Status..."
+#: includes/main/class-bpps-profile-status.php:108
+msgid "You can store only 10 status. Old status will be deleted if you add more than 10 status."
 msgstr ""
 
 #: includes/main/class-bpps-profile-status.php:114
+msgid "Add New Status..."
+msgstr ""
+
+#: includes/main/class-bpps-profile-status.php:117
 msgid "Add New"
 msgstr ""
 
-#: includes/main/class-bpps-profile-status.php:116
+#: includes/main/class-bpps-profile-status.php:119
 msgid "Add New & Set as Current"
 msgstr ""
 
-#: includes/main/class-bpps-profile-status.php:124
+#: includes/main/class-bpps-profile-status.php:127
 msgid "Cancel"
 msgstr ""
 
-#: includes/main/class-bpps-profile-status.php:125
+#: includes/main/class-bpps-profile-status.php:128
 msgid "characters left"
 msgstr ""
 
-#: includes/main/class-bpps-profile-status.php:141
+#: includes/main/class-bpps-profile-status.php:144
 msgid "Old Statuses"
 msgstr ""
 
-#: includes/main/class-bpps-profile-status.php:157
-#: includes/main/class-bpps-profile-status.php:302
-#: includes/main/class-bpps-profile-status.php:354
+#: includes/main/class-bpps-profile-status.php:160, includes/main/class-bpps-profile-status.php:305, includes/main/class-bpps-profile-status.php:357
 msgid "Set as Current Status"
 msgstr ""
 
-#: includes/main/class-bpps-profile-status.php:162
+#: includes/main/class-bpps-profile-status.php:165
 msgid "Edit this Status"
 msgstr ""
 
-#: includes/main/class-bpps-profile-status.php:166
+#: includes/main/class-bpps-profile-status.php:169
 msgid "Delete this Status"
 msgstr ""
 
-#: includes/main/class-bpps-profile-status.php:177
+#: includes/main/class-bpps-profile-status.php:180
 msgid "No statuses available."
 msgstr ""
 
-#: includes/main/class-bpps-profile-status.php:291
+#: includes/main/class-bpps-profile-status.php:294
 msgid "Edit Current Status"
 msgstr ""
 
-#: includes/main/class-bpps-profile-status.php:295
+#: includes/main/class-bpps-profile-status.php:298
 msgid "Delete Current Status"
-msgstr ""
-
-#. Plugin Name of the plugin/theme
-msgid "BP Profile Status"
-msgstr ""
-
-#. Plugin URI of the plugin/theme
-msgid ""
-"https://github.com/wp3sixty/bp-profile-status/?utm_source=dashboard&utm_"
-"medium=plugin&utm_campaign=bp-profile-status"
-msgstr ""
-
-#. Description of the plugin/theme
-msgid "Profile Status for BuddyPress."
-msgstr ""
-
-#. Author of the plugin/theme
-msgid "wp3sixty"
-msgstr ""
-
-#. Author URI of the plugin/theme
-msgid ""
-"https://github.com/wp3sixty?utm_source=dashboard&utm_medium=plugin&utm_"
-"campaign=bp-profile-status"
-msgstr ""
-
-#: includes/main/class-bpps-profile-status.php:87
-msgctxt "My Profile Status sub nav"
-msgid "Status"
 msgstr ""

@@ -44,6 +44,17 @@ class BP_Profile_Status_Public {
 	private $version;
 
 	/**
+	 * The suffix for CSS / JS files for minification.
+	 *
+	 * @since   1.0.0
+	 *
+	 * @access  private
+	 *
+	 * @var     string  $suffix The current version of this plugin.
+	 */
+	private $suffix;
+
+	/**
 	 * Initialize the class and set its properties.
 	 *
 	 * @since   1.0.0
@@ -57,6 +68,54 @@ class BP_Profile_Status_Public {
 
 		$this->plugin_name  = $plugin_name;
 		$this->version      = $version;
+		$this->suffix       = $this->bpps_get_script_style_suffix();
+
+	}
+
+	/**
+	 * Checking if SCRIPT_DEBUG constant is defined or not
+	 *
+	 * @since   1.0.0
+	 *
+	 * @access  public
+	 *
+	 * @return  string  suffix for CSS / JS files.
+	 */
+	public function bpps_get_script_style_suffix() {
+
+		$suffix = ( defined( 'SCRIPT_DEBUG' ) && ( true === constant( 'SCRIPT_DEBUG' ) ) ) ? '' : '.min';
+
+		return $suffix;
+
+	}
+
+	/**
+	 * Register the stylesheets for the public-facing side of the site.
+	 *
+	 * @since   1.0.0
+	 *
+	 * @access  public
+	 */
+	public function enqueue_styles() {
+
+		$file_name = 'bp-profile-status-public' . $this->suffix . '.css';
+
+		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/' . $file_name, array(), $this->version, 'all' );
+
+	}
+
+	/**
+	 * Register the JavaScript for the public-facing side of the site.
+	 *
+	 * @since   1.0.0
+	 *
+	 * @access  public
+	 */
+	public function enqueue_scripts() {
+
+		$file_name = 'bp-profile-status-public' . $this->suffix . '.js';
+
+		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/' . $file_name, array( 'jquery' ), $this->version, false );
 
 	}
 
