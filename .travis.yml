@@ -29,4 +29,4 @@ install:
 script:
   - phpcs --config-set installed_paths ~/wordpress-coding-standards
   - phpcs --standard=wordpress-extra --extensions=php --ignore=node_modules,deploy  -n -s .
-  - grunt build
+  - gulp
