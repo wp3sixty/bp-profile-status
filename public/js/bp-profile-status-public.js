@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 (function( $ ) {
 
 	window.BPPS = {
@@ -109,7 +103,7 @@
 						type: 'post',
 						data: data,
 						success: function( response ) {
-							if ( response.sucess ) {
+							if ( response.success ) {
 								alert( bpps_main_js.i18n.bpps_status_delete_success );
 
 								$( that ).parent().parent().remove();

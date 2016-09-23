@@ -120,7 +120,7 @@ class BP_Profile_Status_Loader {
 			'component'     => $component,
 			'callback'      => $callback,
 			'priority'      => $priority,
-			'accepted_args' => $accepted_args
+			'accepted_args' => $accepted_args,
 		);
 
 		return $hooks;

@@ -79,6 +79,7 @@ class BP_Profile_Status {
 		$this->load_dependencies();
 		$this->set_locale();
 		$this->define_public_hooks();
+		$this->define_public_ajax_hooks();
 
 	}
 
@@ -87,9 +88,10 @@ class BP_Profile_Status {
 	 *
 	 * Include the following files that make up the plugin:
 	 *
-	 * - BP_Profile_Status_Loader.  Orchestrates the hooks of the plugin.
-	 * - BP_Profile_Status_i18n.    Defines internationalization functionality.
-	 * - BP_Profile_Status_Public.  Defines all hooks for the public side of the site.
+	 * - BP_Profile_Status_Loader.      Orchestrates the hooks of the plugin.
+	 * - BP_Profile_Status_i18n.        Defines internationalization functionality.
+	 * - BP_Profile_Status_Public.      Defines all hooks for the public side of the site.
+	 * - BP_Profile_Status_Public_Ajax. Defines all hooks for the public side of the site.
 	 *
 	 * Create an instance of the loader which will be used to register the hooks
 	 * with WordPress.
@@ -117,6 +119,12 @@ class BP_Profile_Status {
 		 * side of the site.
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-bp-profile-status-public.php';
+
+		/**
+		 * The class responsible for defining all ajax actions that occur in the public-facing
+		 * side of the site.
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-bp-profile-status-public-ajax.php';
 
 		$this->loader = new BP_Profile_Status_Loader();
 
@@ -162,6 +170,11 @@ class BP_Profile_Status {
 		// Checking if BuddyPress plugin is activated.
 		if ( true === is_plugin_active( 'buddypress/bp-loader.php' ) ) {
 			$this->loader->add_action( 'bp_init', $plugin_public, 'bpps_add_profile_status_menu' );
+			$this->loader->add_action( 'bp_template_content', $plugin_public, 'bpps_content' );
+			$this->loader->add_action( 'bp_before_member_header_meta', $plugin_public, 'bpps_display_current_status' );
+			$this->loader->add_action( 'bp_directory_members_item', $plugin_public, 'bpps_display_current_status_member_list' );
+
+			$this->loader->add_filter( 'bp_settings_admin_nav', $plugin_public, 'bpps_profile_status_nav' );
 		}
 
 	}
@@ -222,6 +235,16 @@ class BP_Profile_Status {
 	public function get_version() {
 
 		return $this->version;
+
+	}
+
+	private function define_public_ajax_hooks() {
+
+		$plugin_public_ajax = new BP_Profile_Status_Public_Ajax();
+
+		$this->loader->add_action( 'wp_ajax_bpps_delete_current_status', $plugin_public_ajax, 'bpps_delete_current_status' );
+		$this->loader->add_action( 'wp_ajax_bpps_delete_status', $plugin_public_ajax, 'bpps_delete_status' );
+		$this->loader->add_action( 'wp_ajax_bpps_set_current_status', $plugin_public_ajax, 'bpps_set_current_status' );
 
 	}
 
