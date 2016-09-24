@@ -238,6 +238,13 @@ class BP_Profile_Status {
 
 	}
 
+	/**
+	 * Register all of the ajax actions related to the public-facing functionality of the plugin.
+	 *
+	 * @since   1.0.0
+	 *
+	 * @access  private
+	 */
 	private function define_public_ajax_hooks() {
 
 		$plugin_public_ajax = new BP_Profile_Status_Public_Ajax();

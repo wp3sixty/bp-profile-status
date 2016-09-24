@@ -1,10 +1,30 @@
 <?php
+// Determine if we should update the content and plugin paths.
+if ( file_exists( dirname( __DIR__ ) . '/wp-load.php' ) ) {
+	define( 'WP_CONTENT_DIR', dirname( __DIR__ ) . '/wp-content/' );
+} else if ( file_exists( '../../../wp-content' ) ) {
+	define( 'WP_CONTENT_DIR', dirname( dirname( dirname( getcwd() ) ) ) . '/wp-content/' );
+}
+if ( defined( 'WP_CONTENT_DIR' ) && ! defined( 'WP_PLUGIN_DIR' ) ) {
+	define( 'WP_PLUGIN_DIR', WP_CONTENT_DIR . 'plugins/' );
+}
+
+if ( file_exists( __DIR__ . '/../phpunit-plugin-bootstrap.project.php' ) ) {
+    require_once( __DIR__ . '/../phpunit-plugin-bootstrap.project.php' );
+}
 
 global $_plugin_file;
 
 $_tests_dir = getenv( 'WP_TESTS_DIR' );
+
+// Travis CI & Vagrant SSH tests directory.
 if ( empty( $_tests_dir ) ) {
 	$_tests_dir = '/tmp/wordpress-tests';
+}
+
+// Relative path to Core tests directory.
+if ( ! file_exists( $_tests_dir . '/includes/' ) ) {
+	$_tests_dir = '../../../../tests/phpunit';
 }
 
 if ( ! file_exists( $_tests_dir . '/includes/' ) ) {
@@ -12,7 +32,7 @@ if ( ! file_exists( $_tests_dir . '/includes/' ) ) {
 }
 require_once $_tests_dir . '/includes/functions.php';
 
-$_plugin_dir = dirname( __DIR__ );
+$_plugin_dir = getcwd();
 foreach ( glob( $_plugin_dir . '/*.php' ) as $_plugin_file_candidate ) {
 	// @codingStandardsIgnoreStart
 	$_plugin_file_src = file_get_contents( $_plugin_file_candidate );
@@ -45,7 +65,7 @@ function xwp_filter_active_plugins_for_phpunit( $active_plugins ) {
 	}
 	if ( ! empty( $forced_active_plugins ) ) {
 		foreach ( $forced_active_plugins as $forced_active_plugin ) {
-			$active_plugins[ "$forced_active_plugin" ] = time();
+			$active_plugins[] = $forced_active_plugin;
 		}
 	}
 	return $active_plugins;

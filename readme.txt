@@ -2,8 +2,8 @@
 Contributors: wp3sixty, sanket.parmar, pranalipatel
 Tags: buddypress profile status, buddypress profile, activity, status, profile, members, buddypress
 Requires at least: WordPress 4.0
-Tested up to: WordPress 4.4.1
-Stable tag: 1.3
+Tested up to: WordPress 4.6.1
+Stable tag: 1.3.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -42,7 +42,7 @@ Yes! BP Profile Status works out-of-the-box with nearly every BuddyPress support
 
 == Changelog ==
 
-= 1.3 - Jan 31, 2016 =
+= 1.3.0 - Sep 24, 2016 =
 * Fixed coding standards
 
 = 1.2 - Jan 23, 2016 =
@@ -60,5 +60,5 @@ Yes! BP Profile Status works out-of-the-box with nearly every BuddyPress support
 
 == Upgrade Notice ==
 
-= 1.2 - Jan 23, 2016 =
-Direct edit option for current status
+= 1.3.0 - Sep 24, 2016 =
+Fixed coding standards
