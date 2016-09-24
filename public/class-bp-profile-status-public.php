@@ -307,6 +307,7 @@ class BP_Profile_Status_Public {
 					<textarea name="bpps-current-status-textarea" id="bpps-current-status-textarea"></textarea>
 					<input type="submit" name="bpps_update_status_update" id="bpps_update_status_update" value="Update">
 					<input type="reset" name="bpps_cancel_update" id="bpps_cancel_update" value="Cancel">
+					<?php wp_nonce_field( 'bp-profile-action', 'nonce' ); ?>
 				</form>
 				<?php
 				if ( ( get_current_user_id() === bp_displayed_user_id() ) ) {
