@@ -125,6 +125,8 @@ class BP_Profile_Status_Public {
 			'bpps_delete_status_confirm'            => esc_html__( 'Are you sure you want to delete this status?', 'bp-profile-status' ),
 			'bpps_status_delete_success'            => esc_html__( 'Status deleted successfully.!', 'bp-profile-status' ),
 			'bpps_status_set_success'               => esc_html__( 'Status set successfully.!', 'bp-profile-status' ),
+			'bpps_status_link'						=> esc_js( bp_loggedin_user_domain() . 'profile/status/' ),
+			'bpps_add_new_status'					=> esc_html__( 'Add New Status', 'bp-profile-status' ),
 		);
 
 		wp_localize_script( $this->plugin_name, 'bpps_main_js', array(
@@ -334,6 +336,14 @@ class BP_Profile_Status_Public {
 				if ( true === $no_status_display ) {
 					esc_html_e( 'No current status is set yet.', 'bp-profile-status' );
 				}
+
+				if ( ( get_current_user_id() === bp_displayed_user_id() ) ) {
+					$status_link 	= bp_loggedin_user_domain() . 'profile/status/';
+					$add_new_status = __( 'Add New Status', 'bp-profile-status' );
+					?>
+					<a href="<?php echo esc_attr( $status_link ); ?>" title="<?php echo esc_attr( $add_new_status ); ?>"><?php echo esc_html( $add_new_status ); ?></a>
+					<?php
+				}
 			}
 			?>
 		</div>
@@ -502,6 +512,14 @@ class BP_Profile_Status_Public {
 
 				if ( true === $no_status_display ) {
 					esc_html_e( 'No current status is set yet.', 'bp-profile-status' );
+				}
+
+				if ( ( get_current_user_id() === $user_id ) ) {
+					$status_link 	= bp_loggedin_user_domain() . 'profile/status/';
+					$add_new_status = __( 'Add New Status', 'bp-profile-status' );
+					?>
+					<a href="<?php echo esc_attr( $status_link ); ?>" title="<?php echo esc_attr( $add_new_status ); ?>"><?php echo esc_html( $add_new_status ); ?></a>
+					<?php
 				}
 			}
 			?>

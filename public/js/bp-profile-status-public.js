@@ -82,6 +82,13 @@
 								if ( true === bpps_main_js.i18n.bpps_no_current_status_display ) {
 									$( '#bpps-current-status' ).html( bpps_main_js.i18n.bpps_no_current_status_set + ' ' );
 								}
+
+								var status_link = $( '<a />' ); 
+								status_link.attr( 'href', bpps_main_js.i18n.bpps_status_link );
+								 status_link.attr( 'title', bpps_main_js.i18n.bpps_add_new_status );
+								 status_link.text( bpps_main_js.i18n.bpps_add_new_status );  
+
+								$( '#bpps-current-status' ).append( status_link );
 							}
 						}
 					} );
