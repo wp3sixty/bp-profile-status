@@ -78,7 +78,10 @@
 						success: function( response ) {
 							if ( response.success ) {
 								alert( bpps_main_js.i18n.bpps_delete_current_status_success );
-								$( '#bpps-current-status' ).html( bpps_main_js.i18n.bpps_no_current_status_set );
+
+								if ( true === bpps_main_js.i18n.bpps_no_current_status_display ) {
+									$( '#bpps-current-status' ).html( bpps_main_js.i18n.bpps_no_current_status_set + ' ' );
+								}
 							}
 						}
 					} );

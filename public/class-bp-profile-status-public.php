@@ -120,6 +120,7 @@ class BP_Profile_Status_Public {
 			'bpps_update_and_set_as_current'        => esc_html__( 'Update & Set as Current', 'bp-profile-status' ),
 			'bpps_delete_current_status_confirm'    => esc_html__( 'Are you sure you want to delete current status?', 'bp-profile-status' ),
 			'bpps_delete_current_status_success'    => esc_html__( 'Current status deleted successfully.!', 'bp-profile-status' ),
+			'bpps_no_current_status_display'        => apply_filters( 'bpps_no_current_status_display', true ),
 			'bpps_no_current_status_set'            => esc_html__( 'No current status is set yet.', 'bp-profile-status' ),
 			'bpps_delete_status_confirm'            => esc_html__( 'Are you sure you want to delete this status?', 'bp-profile-status' ),
 			'bpps_status_delete_success'            => esc_html__( 'Status deleted successfully.!', 'bp-profile-status' ),
@@ -328,7 +329,11 @@ class BP_Profile_Status_Public {
 					<?php
 				}
 			} else {
-				esc_html_e( 'No current status is set yet.', 'bp-profile-status' );
+				$no_status_display = apply_filters( 'bpps_no_current_status_display', true );
+
+				if ( true === $no_status_display ) {
+					esc_html_e( 'No current status is set yet.', 'bp-profile-status' );
+				}
 			}
 			?>
 		</div>
@@ -493,7 +498,11 @@ class BP_Profile_Status_Public {
 					<?php
 				}
 			} else {
-				echo esc_html_e( 'No current status is set yet.', 'bp-profile-status' );
+				$no_status_display = apply_filters( 'bpps_no_current_status_display', true );
+
+				if ( true === $no_status_display ) {
+					esc_html_e( 'No current status is set yet.', 'bp-profile-status' );
+				}
 			}
 			?>
 		</div>
