@@ -63,9 +63,9 @@ class BP_Profile_Status_Public {
 	 */
 	public function __construct( $plugin_name, $version ) {
 
-		$this->plugin_name  = $plugin_name;
-		$this->version      = $version;
-		$this->suffix       = $this->bpps_get_script_style_suffix();
+		$this->plugin_name = $plugin_name;
+		$this->version     = $version;
+		$this->suffix      = $this->bpps_get_script_style_suffix();
 
 	}
 
@@ -115,23 +115,23 @@ class BP_Profile_Status_Public {
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/' . $file_name, array( 'jquery' ), $this->version, false );
 
 		$bpps_localize_array = array(
-			'bpps_max_character_alert'              => esc_html__( 'You have reached max character limit. \n\nPlease revise it.!', 'bp-profile-status' ),
-			'bpps_update'                           => esc_html__( 'Update', 'bp-profile-status' ),
-			'bpps_update_and_set_as_current'        => esc_html__( 'Update & Set as Current', 'bp-profile-status' ),
-			'bpps_delete_current_status_confirm'    => esc_html__( 'Are you sure you want to delete current status?', 'bp-profile-status' ),
-			'bpps_delete_current_status_success'    => esc_html__( 'Current status deleted successfully.!', 'bp-profile-status' ),
-			'bpps_no_current_status_display'        => apply_filters( 'bpps_no_current_status_display', true ),
-			'bpps_no_current_status_set'            => esc_html__( 'No current status is set yet.', 'bp-profile-status' ),
-			'bpps_delete_status_confirm'            => esc_html__( 'Are you sure you want to delete this status?', 'bp-profile-status' ),
-			'bpps_status_delete_success'            => esc_html__( 'Status deleted successfully.!', 'bp-profile-status' ),
-			'bpps_status_set_success'               => esc_html__( 'Status set successfully.!', 'bp-profile-status' ),
-			'bpps_status_link'						=> esc_js( bp_loggedin_user_domain() . 'profile/status/' ),
-			'bpps_add_new_status'					=> esc_html__( 'Add New Status', 'bp-profile-status' ),
+			'bpps_max_character_alert'			 => esc_html__( 'You have reached max character limit. \n\nPlease revise it.!', 'bp-profile-status' ),
+			'bpps_update'                        => esc_html__( 'Update', 'bp-profile-status' ),
+			'bpps_update_and_set_as_current'     => esc_html__( 'Update & Set as Current', 'bp-profile-status' ),
+			'bpps_delete_current_status_confirm' => esc_html__( 'Are you sure you want to delete current status?', 'bp-profile-status' ),
+			'bpps_delete_current_status_success' => esc_html__( 'Current status deleted successfully.!', 'bp-profile-status' ),
+			'bpps_no_current_status_display'     => apply_filters( 'bpps_no_current_status_display', true ),
+			'bpps_no_current_status_set'         => esc_html__( 'No current status is set yet.', 'bp-profile-status' ),
+			'bpps_delete_status_confirm'         => esc_html__( 'Are you sure you want to delete this status?', 'bp-profile-status' ),
+			'bpps_status_delete_success'         => esc_html__( 'Status deleted successfully.!', 'bp-profile-status' ),
+			'bpps_status_set_success'            => esc_html__( 'Status set successfully.!', 'bp-profile-status' ),
+			'bpps_status_link'					 => esc_js( bp_loggedin_user_domain() . 'profile/status/' ),
+			'bpps_add_new_status'				 => esc_html__( 'Add New Status', 'bp-profile-status' ),
 		);
 
 		wp_localize_script( $this->plugin_name, 'bpps_main_js', array(
 			'set_current_status_nonce' => wp_create_nonce( 'set_current_status_nonce' ),
-			'i18n'  => $bpps_localize_array,
+			'i18n'  				   => $bpps_localize_array,
 		) );
 
 	}
@@ -154,18 +154,18 @@ class BP_Profile_Status_Public {
 		}
 
 		// Creating profile link of user.
-		$proflie_link   = trailingslashit( $user_domain . 'profile' );
-		$bpps_status    = array(
-			'name'              => esc_html__( 'Status', 'bp-profile-status' ), // Display name for the nav item
-			'slug'              => 'status', // URL slug for the nav item
-			'parent_slug'       => 'profile', // URL slug of the parent nav item
-			'parent_url'        => $proflie_link, // URL of the parent item
-			'item_css_id'       => 'bpps-status', // The CSS ID to apply to the HTML of the nav item
-			'user_has_access'   => true, // Can the logged in user see this nav item?
-			'site_admin_only'   => false, // Can only site admins see this nav item?
-			'position'          => 80, // Index of where this nav item should be positioned
-			'screen_function'   => array( $this, 'settings_ui' ), // The name of the function to run when clicked
-			'link'              => '',// The link for the subnav item; optional, not usually required.
+		$proflie_link = trailingslashit( $user_domain . 'profile' );
+		$bpps_status  = array(
+			'name'            => esc_html__( 'Status', 'bp-profile-status' ), // Display name for the nav item
+			'slug'            => 'status', // URL slug for the nav item
+			'parent_slug'     => 'profile', // URL slug of the parent nav item
+			'parent_url'      => $proflie_link, // URL of the parent item
+			'item_css_id'     => 'bpps-status', // The CSS ID to apply to the HTML of the nav item
+			'user_has_access' => true, // Can the logged in user see this nav item?
+			'site_admin_only' => false, // Can only site admins see this nav item?
+			'position'        => 80, // Index of where this nav item should be positioned
+			'screen_function' => array( $this, 'settings_ui' ), // The name of the function to run when clicked
+			'link'            => '',// The link for the subnav item; optional, not usually required.
 		);
 
 		// Adding Status menu to BuddyPress profile navigation.
@@ -223,20 +223,20 @@ class BP_Profile_Status_Public {
 				<?php wp_nonce_field( 'bp-profile-action', 'nonce' ); ?>
 				<div class="bp-widget bpps-add-new">
 					<textarea name="bpps_add_new_status" id="bpps_add_new_status" placeholder="<?php esc_attr_e( 'Add New Status...', 'bp-profile-status' ); ?>"></textarea>
-					<input name="bpps-eidt-status-org" id="bpps-eidt-status-org" type="hidden" value="" />
+					<input name="bpps-edit-status-org" id="bpps-edit-status-org" type="hidden" value="" />
 					<input type="submit" name="bpps_add_new" id="bpps_add_new" value="<?php esc_attr_e( 'Add New', 'bp-profile-status' ); ?>" />
 					<input type="submit" name="bpps_add_new_and_set" id="bpps_add_new_and_set" value="<?php esc_attr_e( 'Add New & Set as Current', 'bp-profile-status' ); ?>" />
 					<input type="submit" name="bpps_update_status" class="bpps_hide" id="bpps_update_status" value="<?php esc_attr_e( 'Update', 'bp-profile-status' ); ?>" />
 					<input type="submit" name="bpps_update_status_and_set" class="bpps_hide" id="bpps_update_status_and_set" value="<?php esc_attr_e( 'Update & Set as Current', 'bp-profile-status' ); ?>"/>
 					<input type="reset" name="bpps_cancel" class="bpps_hide" id="bpps_cancel" value="<?php esc_attr_e( 'Cancel', 'bp-profile-status' ); ?>"/>
-					<span><span>140</span>&nbsp;<?php esc_attr_e( 'characters left', 'bp-profile-status' ); ?></span>
+					<span><span>140</span>&nbsp;<?php esc_html_e( 'characters left', 'bp-profile-status' ); ?></span>
 				</div>
 			</form>
 			<?php
 		}
 
-		$bpps_current_status    = get_user_meta( bp_displayed_user_id(), 'bpps_current_status', true );
-		$bpps_old_statuses      = get_user_meta( bp_displayed_user_id(), 'bpps_old_statuses', true );
+		$bpps_current_status = get_user_meta( bp_displayed_user_id(), 'bpps_current_status', true );
+		$bpps_old_statuses   = get_user_meta( bp_displayed_user_id(), 'bpps_old_statuses', true );
 
 		if ( ! empty( $bpps_old_statuses ) ) {
 			if ( false !== ( $key = array_search( $bpps_current_status, $bpps_old_statuses, true ) ) ) {
@@ -277,7 +277,7 @@ class BP_Profile_Status_Public {
 				} else {
 					?>
 					<tr>
-						<td><?php esc_attr_e( 'No statuses available.', 'bp-profile-status' ); ?></td>
+						<td><?php esc_html_e( 'No statuses available.', 'bp-profile-status' ); ?></td>
 					</tr>
 					<?php
 				}
@@ -308,24 +308,24 @@ class BP_Profile_Status_Public {
 				<form method="post" action="" enctype="multipart/form-data" class="bpps_hide" id="bpps-current-status-direct-edit">
 					<input id="bpps-current-status-org" name="bpps-current-status-org" type="hidden" value="<?php echo esc_attr( $bpps_current_status ); ?>" />
 					<textarea name="bpps-current-status-textarea" id="bpps-current-status-textarea"></textarea>
-					<input type="submit" name="bpps_update_status_update" id="bpps_update_status_update" value="Update">
-					<input type="reset" name="bpps_cancel_update" id="bpps_cancel_update" value="Cancel">
+					<input type="submit" name="bpps_update_status_update" id="bpps_update_status_update" value="<?php esc_attr_e( 'Update', 'bp-profile-status' ); ?>">
+					<input type="reset" name="bpps_cancel_update" id="bpps_cancel_update" value="<?php esc_attr_e( 'Cancel', 'bp-profile-status' ); ?>">
 					<?php wp_nonce_field( 'bp-profile-action', 'nonce' ); ?>
 				</form>
 				<?php
 				if ( ( get_current_user_id() === bp_displayed_user_id() ) ) {
 					wp_nonce_field( 'bpps_delete_current_status_nonce', 'bpps_delete_current_status_nonce' );
 					?>
-					<a id="bpps-current-status-edit" title="<?php esc_html_e( 'Edit Current Status', 'bp-profile-status' ); ?>">
+					<a id="bpps-current-status-edit" title="<?php esc_attr_e( 'Edit Current Status', 'bp-profile-status' ); ?>">
 						<i class="dashicons dashicons-edit"></i>
 					</a>
-					<a id="bpps-current-status-delete" title="<?php esc_html_e( 'Delete Current Status', 'bp-profile-status' ); ?>">
+					<a id="bpps-current-status-delete" title="<?php esc_attr_e( 'Delete Current Status', 'bp-profile-status' ); ?>">
 						<i class="dashicons dashicons-trash"></i>
 					</a>
 					<?php
 				} else {
 					?>
-					<a class="bpps-set-status" title="<?php esc_html_e( 'Set as Current Status', 'bp-profile-status' ); ?>">
+					<a class="bpps-set-status" title="<?php esc_attr_e( 'Set as Current Status', 'bp-profile-status' ); ?>">
 						<i class="dashicons dashicons-yes"></i>
 					</a>
 					<?php
@@ -399,7 +399,7 @@ class BP_Profile_Status_Public {
 	private function bpps_add_status_activity( $user_id, $post_array ) {
 
 		$this_user_profile_url = bp_core_get_user_domain( $user_id );
-		$action_string         = '<a href="' . $this_user_profile_url . '">' . bp_core_get_username( $user_id ) . '</a> ' . __( 'added new status', 'bp-profile-status' );
+		$action_string         = '<a href="' . esc_url( $this_user_profile_url ) . '">' . bp_core_get_username( $user_id ) . '</a> ' . __( 'added new status', 'bp-profile-status' );
 		$params                = array(
 			'action'    => $action_string,
 			'content'   => $post_array['bpps_add_new_status'],
@@ -472,7 +472,7 @@ class BP_Profile_Status_Public {
 
 			$bpps_old_statuses[ $key ] = trim( $post_array['bpps-current-status-textarea'] );
 		} elseif ( isset( $post_array['bpps_add_new_status'] ) ) {
-			$key = array_search( trim( $post_array['bpps-eidt-status-org'] ), $bpps_old_statuses, true );
+			$key = array_search( trim( $post_array['bpps-edit-status-org'] ), $bpps_old_statuses, true );
 
 			$bpps_old_statuses[ $key ] = trim( $post_array['bpps_add_new_status'] );
 		}
@@ -502,7 +502,7 @@ class BP_Profile_Status_Public {
 				if ( get_current_user_id() !== $user_id ) {
 					?>
 					<input class="bpps-status-org" type="hidden" value="<?php echo esc_attr( $bpps_status ); ?>" />
-					<a class="bpps-set-status" title="<?php esc_html_e( 'Set as Current Status', 'bp-profile-status' ); ?>">
+					<a class="bpps-set-status" title="<?php esc_attr_e( 'Set as Current Status', 'bp-profile-status' ); ?>">
 						<i class="dashicons dashicons-yes"></i>
 					</a>
 					<?php

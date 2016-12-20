@@ -130,7 +130,7 @@
 				var that = this;
 				var bpps_status = $( that ).parent().siblings( 'td' ).children( '.bpps_old_status_org' ).val();
 
-				$( '#bpps-eidt-status-org' ).val( bpps_status );
+				$( '#bpps-edit-status-org' ).val( bpps_status );
 				$( '#bpps_add_new_status' ).val( bpps_status );
 				$( that ).parent().siblings( 'td' ).children( '.bpps_old_status_org' ).val( bpps_status );
 				$( '#bpps_add_new_status' ).focus();

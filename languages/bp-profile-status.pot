@@ -24,7 +24,7 @@ msgstr ""
 msgid "You have reached max character limit. nnPlease revise it.!"
 msgstr ""
 
-#: public/class-bp-profile-status-public.php:119, public/class-bp-profile-status-public.php:229
+#: public/class-bp-profile-status-public.php:119, public/class-bp-profile-status-public.php:229, public/class-bp-profile-status-public.php:311
 msgid "Update"
 msgstr ""
 
@@ -84,7 +84,7 @@ msgstr ""
 msgid "Add New & Set as Current"
 msgstr ""
 
-#: public/class-bp-profile-status-public.php:231
+#: public/class-bp-profile-status-public.php:231, public/class-bp-profile-status-public.php:312
 msgid "Cancel"
 msgstr ""
 
