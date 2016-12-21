@@ -6,8 +6,8 @@ Using BP Profile Status plugin you can set status in your BuddyPress Profile.
 **Contributors:** [wp3sixty](https://profiles.wordpress.org/wp3sixty), [sanket.parmar](https://profiles.wordpress.org/sanket.parmar), [pranalipatel](https://profiles.wordpress.org/pranalipatel)  
 **Tags:** [buddypress profile status](https://wordpress.org/plugins/tags/buddypress profile status), [buddypress profile](https://wordpress.org/plugins/tags/buddypress profile), [activity](https://wordpress.org/plugins/tags/activity), [status](https://wordpress.org/plugins/tags/status), [profile](https://wordpress.org/plugins/tags/profile), [members](https://wordpress.org/plugins/tags/members), [buddypress](https://wordpress.org/plugins/tags/buddypress)  
 **Requires at least:** WordPress 4.0  
-**Tested up to:** WordPress 4.6.1  
-**Stable tag:** 1.3.0  
+**Tested up to:** WordPress 4.7  
+**Stable tag:** 1.4.0  
 **License:** [GPLv2 or later](http://www.gnu.org/licenses/gpl-2.0.html)  
 
 [![Build Status](https://travis-ci.org/wp3sixty/bp-profile-status.svg?branch=master)](https://travis-ci.org/wp3sixty/bp-profile-status) 
@@ -49,6 +49,10 @@ Yes! BP Profile Status works out-of-the-box with nearly every BuddyPress support
 
 ## Changelog ##
 
+### 1.4.0 - Dec 21, 2016 ###
+* New - `bpps_no_current_status_display` filter to hide no current status message
+* New - Add New Status link if no status is set
+
 ### 1.3.0 - Sep 24, 2016 ###
 * Fixed coding standards
 
@@ -68,7 +72,7 @@ Yes! BP Profile Status works out-of-the-box with nearly every BuddyPress support
 
 ## Upgrade Notice ##
 
-### 1.3.0 - Sep 24, 2016 ###
-Fixed coding standards
+### 1.4.0 - Dec 21, 2016 ###
+`bpps_no_current_status_display` filter to hide no current status message, Add New Status link if no status is set.
 
 
