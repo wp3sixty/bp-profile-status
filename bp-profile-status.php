@@ -15,7 +15,7 @@
  * Plugin Name:       BP Profile Status
  * Plugin URI:        https://github.com/wp3sixty/bp-profile-status/
  * Description:       Profile Status for BuddyPress.
- * Version:           1.4.0
+ * Version:           1.5.0
  * Author:            wp3sixty
  * Author URI:        http://wp3sixty.com/
  * License:           GPL-2.0+

@@ -2,8 +2,8 @@
 Contributors: wp3sixty, sanket.parmar, pranalipatel
 Tags: buddypress profile status, buddypress profile, activity, status, profile, members, buddypress
 Requires at least: WordPress 4.0
-Tested up to: WordPress 4.7
-Stable tag: 1.4.0
+Tested up to: WordPress 4.7.2
+Stable tag: 1.5.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -42,6 +42,9 @@ Yes! BP Profile Status works out-of-the-box with nearly every BuddyPress support
 
 == Changelog ==
 
+= 1.5.0 - Feb 02, 2017 =
+* New - `bpps_text_counter` filter to increase/decrease character limit
+
 = 1.4.0 - Dec 21, 2016 =
 * New - `bpps_no_current_status_display` filter to hide no current status message
 * New - Add New Status link if no status is set
@@ -64,5 +67,5 @@ Yes! BP Profile Status works out-of-the-box with nearly every BuddyPress support
 
 == Upgrade Notice ==
 
-= 1.4.0 - Dec 21, 2016 =
-`bpps_no_current_status_display` filter to hide no current status message, Add New Status link if no status is set.
+= 1.5.0 - Feb 02, 2017 =
+`bpps_text_counter` filter to increase/decrease character limit.
