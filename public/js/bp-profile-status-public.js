@@ -12,7 +12,7 @@
 		},
 		bppsCharacterLimit: function() {
 			$( '#bpps_add_new_status' ).on( 'keyup', function( e ) {
-				var max = 140;
+				var max = parseInt( bpps_main_js.i18n.bpps_text_count );
 				var tval = $( this ).val();
 				var len = tval.length;
 				var remain = parseInt( max - len );
@@ -25,7 +25,7 @@
 					$( this ).val( ( tval ).substring( 0, max ) );
 				}
 
-				$( '.bpps-add-new span span' ).html( remain );
+				$( '.bpps-add-new span span' ).text( window.BPPS.bppsAddCommas( remain ) );
 			} );
 		},
 		bppsCurrentStatusEdit: function() {
@@ -175,6 +175,19 @@
 					}
 				} );
 			} );
+		},
+		bppsAddCommas: function( nStr ) {
+			nStr += '';
+			x = nStr.split( '.' );
+			x1 = x[ 0 ];
+			x2 = x.length > 1 ? '.' + x[ 1 ] : '';
+			var rgx = /(\d+)(\d{3})/;
+
+			while ( rgx.test( x1 ) ) {
+				x1 = x1.replace( rgx, '$1' + ',' + '$2' );
+			}
+
+			return x1 + x2;
 		}
 	};
 

@@ -1,4 +1,4 @@
-# Copyright (C) 2016 BP Profile Status
+# Copyright (C) 2017 BP Profile Status
 # This file is distributed under the same license as the BP Profile Status package.
 msgid ""
 msgstr ""
@@ -6,7 +6,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2016-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2017-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Sanket Parmar <sanket.parmar11@gmail.com>\n"
 "Language-Team: Sanket Parmar <sanket.parmar11@gmail.com>\n"
 "X-Poedit-Basepath: ..\n"
@@ -16,7 +16,7 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: public/class-bp-profile-status-public-ajax.php:153, public/class-bp-profile-status-public.php:402
+#: public/class-bp-profile-status-public-ajax.php:153, public/class-bp-profile-status-public.php:403
 msgid "added new status"
 msgstr ""
 
@@ -24,11 +24,11 @@ msgstr ""
 msgid "You have reached max character limit. nnPlease revise it.!"
 msgstr ""
 
-#: public/class-bp-profile-status-public.php:119, public/class-bp-profile-status-public.php:229, public/class-bp-profile-status-public.php:311
+#: public/class-bp-profile-status-public.php:119, public/class-bp-profile-status-public.php:230, public/class-bp-profile-status-public.php:312
 msgid "Update"
 msgstr ""
 
-#: public/class-bp-profile-status-public.php:120, public/class-bp-profile-status-public.php:230
+#: public/class-bp-profile-status-public.php:120, public/class-bp-profile-status-public.php:231
 msgid "Update & Set as Current"
 msgstr ""
 
@@ -40,7 +40,7 @@ msgstr ""
 msgid "Current status deleted successfully.!"
 msgstr ""
 
-#: public/class-bp-profile-status-public.php:124, public/class-bp-profile-status-public.php:337, public/class-bp-profile-status-public.php:514
+#: public/class-bp-profile-status-public.php:124, public/class-bp-profile-status-public.php:338, public/class-bp-profile-status-public.php:515
 msgid "No current status is set yet."
 msgstr ""
 
@@ -56,71 +56,71 @@ msgstr ""
 msgid "Status set successfully.!"
 msgstr ""
 
-#: public/class-bp-profile-status-public.php:129, public/class-bp-profile-status-public.php:342, public/class-bp-profile-status-public.php:519
+#: public/class-bp-profile-status-public.php:129, public/class-bp-profile-status-public.php:343, public/class-bp-profile-status-public.php:520
 msgid "Add New Status"
 msgstr ""
 
-#: public/class-bp-profile-status-public.php:159
+#: public/class-bp-profile-status-public.php:160
 msgid "Status"
 msgstr ""
 
-#: public/class-bp-profile-status-public.php:219
+#: public/class-bp-profile-status-public.php:220
 msgid "Note: "
 msgstr ""
 
-#: public/class-bp-profile-status-public.php:220
+#: public/class-bp-profile-status-public.php:221
 msgid "You can store only 10 status. Old status will be deleted if you add more than 10 status."
 msgstr ""
 
-#: public/class-bp-profile-status-public.php:225
+#: public/class-bp-profile-status-public.php:226
 msgid "Add New Status..."
 msgstr ""
 
-#: public/class-bp-profile-status-public.php:227
+#: public/class-bp-profile-status-public.php:228
 msgid "Add New"
 msgstr ""
 
-#: public/class-bp-profile-status-public.php:228
+#: public/class-bp-profile-status-public.php:229
 msgid "Add New & Set as Current"
 msgstr ""
 
-#: public/class-bp-profile-status-public.php:231, public/class-bp-profile-status-public.php:312
+#: public/class-bp-profile-status-public.php:232, public/class-bp-profile-status-public.php:313
 msgid "Cancel"
 msgstr ""
 
-#: public/class-bp-profile-status-public.php:232
+#: public/class-bp-profile-status-public.php:233
 msgid "characters left"
 msgstr ""
 
-#: public/class-bp-profile-status-public.php:248
+#: public/class-bp-profile-status-public.php:249
 msgid "Old Statuses"
 msgstr ""
 
-#: public/class-bp-profile-status-public.php:262, public/class-bp-profile-status-public.php:328, public/class-bp-profile-status-public.php:505
+#: public/class-bp-profile-status-public.php:263, public/class-bp-profile-status-public.php:329, public/class-bp-profile-status-public.php:506
 msgid "Set as Current Status"
 msgstr ""
 
-#: public/class-bp-profile-status-public.php:266
+#: public/class-bp-profile-status-public.php:267
 msgid "Edit this Status"
 msgstr ""
 
-#: public/class-bp-profile-status-public.php:269
+#: public/class-bp-profile-status-public.php:270
 msgid "Delete this Status"
 msgstr ""
 
-#: public/class-bp-profile-status-public.php:280
+#: public/class-bp-profile-status-public.php:281
 msgid "No statuses available."
 msgstr ""
 
-#: public/class-bp-profile-status-public.php:319
+#: public/class-bp-profile-status-public.php:320
 msgid "Edit Current Status"
 msgstr ""
 
-#: public/class-bp-profile-status-public.php:322
+#: public/class-bp-profile-status-public.php:323
 msgid "Delete Current Status"
 msgstr ""
 
-#: public/class-bp-profile-status-public.php:558
+#: public/class-bp-profile-status-public.php:559
 msgctxt "My Profile Status sub nav"
 msgid "Status"
 msgstr ""

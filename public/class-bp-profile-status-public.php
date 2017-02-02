@@ -115,7 +115,7 @@ class BP_Profile_Status_Public {
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/' . $file_name, array( 'jquery' ), $this->version, false );
 
 		$bpps_localize_array = array(
-			'bpps_max_character_alert'			 => esc_html__( 'You have reached max character limit. \n\nPlease revise it.!', 'bp-profile-status' ),
+			'bpps_max_character_alert'			 => esc_html__( "You have reached max character limit. \n\nPlease revise it.!", 'bp-profile-status' ),
 			'bpps_update'                        => esc_html__( 'Update', 'bp-profile-status' ),
 			'bpps_update_and_set_as_current'     => esc_html__( 'Update & Set as Current', 'bp-profile-status' ),
 			'bpps_delete_current_status_confirm' => esc_html__( 'Are you sure you want to delete current status?', 'bp-profile-status' ),
@@ -127,6 +127,7 @@ class BP_Profile_Status_Public {
 			'bpps_status_set_success'            => esc_html__( 'Status set successfully.!', 'bp-profile-status' ),
 			'bpps_status_link'					 => esc_js( bp_loggedin_user_domain() . 'profile/status/' ),
 			'bpps_add_new_status'				 => esc_html__( 'Add New Status', 'bp-profile-status' ),
+			'bpps_text_count'				 	 => esc_js( apply_filters( 'bpps_text_counter', 140 ) ),
 		);
 
 		wp_localize_script( $this->plugin_name, 'bpps_main_js', array(
@@ -229,7 +230,7 @@ class BP_Profile_Status_Public {
 					<input type="submit" name="bpps_update_status" class="bpps_hide" id="bpps_update_status" value="<?php esc_attr_e( 'Update', 'bp-profile-status' ); ?>" />
 					<input type="submit" name="bpps_update_status_and_set" class="bpps_hide" id="bpps_update_status_and_set" value="<?php esc_attr_e( 'Update & Set as Current', 'bp-profile-status' ); ?>"/>
 					<input type="reset" name="bpps_cancel" class="bpps_hide" id="bpps_cancel" value="<?php esc_attr_e( 'Cancel', 'bp-profile-status' ); ?>"/>
-					<span><span>140</span>&nbsp;<?php esc_html_e( 'characters left', 'bp-profile-status' ); ?></span>
+					<span><span><?php echo esc_html( number_format( apply_filters( 'bpps_text_counter', 140 ) ) ); ?></span>&nbsp;<?php esc_html_e( 'characters left', 'bp-profile-status' ); ?></span>
 				</div>
 			</form>
 			<?php
