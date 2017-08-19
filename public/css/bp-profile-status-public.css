@@ -21,6 +21,7 @@
 
 .bpps-old-statuses {
     clear: both;
+    margin-top: 25px;
 }
 
 .bpps-old-statuses .bpps-old-statuses-table td:last-child {
