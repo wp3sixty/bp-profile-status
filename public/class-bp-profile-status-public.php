@@ -564,4 +564,24 @@ class BP_Profile_Status_Public {
 
 	}
 
+
+	/**
+	 * Register BP Profile Status as an action of BuddyPress.
+	 *
+	 * @since 1.5.2
+	 *
+	 * @access public
+	 */
+	public function register_activity_action() {
+
+		if ( class_exists( 'BuddyPress' ) && function_exists( 'bp_activity_set_action' ) ) {
+
+			bp_activity_set_action(
+				'bpps_activity_update',
+				'bpps_activity_update',
+				esc_html__( 'BP Profile Status', 'bp-profile-status' )
+			);
+		}
+	}
+
 }

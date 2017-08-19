@@ -16,6 +16,10 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+#: admin/class-bp-profile-status-admin.php:82
+msgid "%1$sBP Profile Status%2$s requires %3$s%4$sBuddyPress%5$s%6$s plugin to be activated. Deactivating BP Profile Status plugin."
+msgstr ""
+
 #: public/class-bp-profile-status-public-ajax.php:153, public/class-bp-profile-status-public.php:403
 msgid "added new status"
 msgstr ""
@@ -123,4 +127,8 @@ msgstr ""
 #: public/class-bp-profile-status-public.php:559
 msgctxt "My Profile Status sub nav"
 msgid "Status"
+msgstr ""
+
+#: public/class-bp-profile-status-public.php:582
+msgid "BP Profile Status"
 msgstr ""

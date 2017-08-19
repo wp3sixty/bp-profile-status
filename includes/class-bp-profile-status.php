@@ -78,6 +78,7 @@ class BP_Profile_Status {
 
 		$this->load_dependencies();
 		$this->set_locale();
+		$this->define_admin_hooks();
 		$this->define_public_hooks();
 		$this->define_public_ajax_hooks();
 
@@ -90,8 +91,9 @@ class BP_Profile_Status {
 	 *
 	 * - BP_Profile_Status_Loader.      Orchestrates the hooks of the plugin.
 	 * - BP_Profile_Status_i18n.        Defines internationalization functionality.
+	 * - BP_Profile_Status_Admin.       Defines all hooks for the admin area.
 	 * - BP_Profile_Status_Public.      Defines all hooks for the public side of the site.
-	 * - BP_Profile_Status_Public_Ajax. Defines all hooks for the public side of the site.
+	 * - BP_Profile_Status_Public_Ajax. Defines all ajax hooks for the public side of the site.
 	 *
 	 * Create an instance of the loader which will be used to register the hooks
 	 * with WordPress.
@@ -113,6 +115,11 @@ class BP_Profile_Status {
 		 * of the plugin.
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-bp-profile-status-i18n.php';
+
+		/**
+		 * The class responsible for defining all actions that occur in the admin area.
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-bp-profile-status-admin.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the public-facing
@@ -148,6 +155,21 @@ class BP_Profile_Status {
 
 	}
 
+
+	/**
+	 * Register all of the hooks related to the admin area functionality of the plugin.
+	 *
+	 * @since 1.5.2
+	 *
+	 * @access private
+	 */
+	private function define_admin_hooks() {
+
+		$bp_profile_status_admin = new BP_Profile_Status_Admin( $this->get_plugin_name(), $this->get_version() );
+
+		$this->loader->add_action( 'admin_notices', $bp_profile_status_admin, 'bpps_add_admin_notice' );
+	}
+
 	/**
 	 * Register all of the hooks related to the public-facing functionality of the plugin.
 	 *
@@ -173,6 +195,7 @@ class BP_Profile_Status {
 			$this->loader->add_action( 'bp_template_content', $plugin_public, 'bpps_content' );
 			$this->loader->add_action( 'bp_before_member_header_meta', $plugin_public, 'bpps_display_current_status' );
 			$this->loader->add_action( 'bp_directory_members_item', $plugin_public, 'bpps_display_current_status_member_list' );
+			$this->loader->add_action( 'admin_init', $plugin_public, 'register_activity_action' );
 
 			$this->loader->add_filter( 'bp_settings_admin_nav', $plugin_public, 'bpps_profile_status_nav' );
 		}
